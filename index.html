@@ -1,110 +1,894 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bailtech Ai Web & AI Solutions — professional websites and practical AI solutions for small businesses.">
-<title>Bailtech Ai | Web & AI Solutions</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BailTech AI | Websites & AI Solutions for Businesses</title>
+
+    <meta name="description"
+        content="BailTech AI builds professional websites and AI-powered digital solutions for modern businesses.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<header class="site-header">
-<a class="logo" href="#home">ERNEST <span>BAIDOO</span></a>
-<button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-<nav class="nav">
-<a href="#home">Home</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#contact">Contact</a>
-</nav>
-</header>
 
-<main>
-<section class="hero" id="home">
-<div class="hero-content">
-<p class="eyebrow">WEB • AI • DIGITAL SOLUTIONS</p>
-<h1>Build a Stronger<br><span>Digital Presence.</span></h1>
-<p class="hero-text">Professional websites and practical AI solutions designed to help small businesses look professional, reach customers, and grow.</p>
-<div class="hero-buttons">
-<a class="btn btn-gold" href="#contact">START A PROJECT</a>
-<a class="btn btn-outline" href="#portfolio">VIEW MY WORK</a>
-</div>
-</div>
-</section>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-<section class="section" id="services">
-<div class="section-heading">
-<p class="eyebrow">WHAT I DO</p>
-<h2>Digital Solutions for <span>Small Businesses</span></h2>
-<p>I create practical digital experiences without making the process complicated.</p>
-</div>
-<div class="cards">
-<article class="card"><div class="card-number">01</div><h3>Business Websites</h3><p>Modern, responsive websites that clearly present your business, services, contact information, and online booking options.</p></article>
-<article class="card"><div class="card-number">02</div><h3>Website Updates</h3><p>Content updates, layout improvements, image changes, mobile fixes, and ongoing website maintenance.</p></article>
-<article class="card"><div class="card-number">03</div><h3>AI Solutions</h3><p>Practical AI-powered tools and business assistants designed to reduce repetitive work and turn business information into useful insights.</p></article>
-<article class="card"><div class="card-number">04</div><h3>Business Tools</h3><p>Digital solutions that can connect your website, booking process, customer information, and business workflows.</p></article>
-</div>
-</section>
+    <header class="navbar">
 
-<section class="portfolio section" id="portfolio">
-<div class="section-heading"><p class="eyebrow">SELECTED WORK</p><h2>Projects That <span>Make an Impact</span></h2></div>
-<div class="project-grid">
-<article class="project-card">
-<div class="project-image project-face"><span>THE FACE DOCTRESS</span></div>
-<div class="project-content">
-<p class="project-label">COMPLETED • BUSINESS WEBSITE</p>
-<h3>THE FACE DOCTRESS</h3>
-<p>A professional website created for a real beauty business, with services, pricing, booking information, business policies, social links, responsive design, and GitHub Pages deployment.</p>
-<a class="text-link" href="https://thefacedoctress.github.io/the-face-doctress/" target="_blank" rel="noopener">VIEW LIVE WEBSITE →</a>
-</div>
-</article>
-<article class="project-card">
-<div class="project-image project-ai"><span>BEAUTY AI</span></div>
-<div class="project-content">
-<p class="project-label">IN PROGRESS • AI APPLICATION</p>
-<h3>BEAUTY AI</h3>
-<p>An AI-powered business assistant concept being developed to help beauty professionals manage business information, customers, services, appointments, and business insights.</p>
-<span class="status">CURRENTLY IN DEVELOPMENT</span>
-</div>
-</article>
-</div>
-</section>
+        <div class="container nav-container">
 
-<section class="about section" id="about">
-<div class="about-content">
-<div><p class="eyebrow">ABOUT ME</p><h2>Technology With a <span>Business Purpose</span></h2></div>
-<div>
-<p>I'm Ernest Baidoo, an Artificial Intelligence graduate focused on building practical technology for small businesses.</p>
-<p>My work combines web development, Python, databases, AI concepts, and problem-solving to create digital tools that businesses can actually use.</p>
-<p>Whether you need a professional website or want to explore an AI-powered solution, I focus on understanding the business first and then building the technology around it.</p>
-</div>
-</div>
-</section>
+            <a href="#home" class="logo">
+                <span>BAILTECH</span> AI
+            </a>
 
-<section class="process section">
-<div class="section-heading"><p class="eyebrow">MY PROCESS</p><h2>Simple. Professional. <span>Focused.</span></h2></div>
-<div class="process-grid">
-<div><span>01</span><h3>Discover</h3><p>We discuss your business, goals, customers, and what you need the technology to accomplish.</p></div>
-<div><span>02</span><h3>Plan</h3><p>I organize the content, features, structure, and technical approach before development begins.</p></div>
-<div><span>03</span><h3>Build</h3><p>I develop the solution and make sure it works across desktop and mobile devices.</p></div>
-<div><span>04</span><h3>Launch</h3><p>Your completed website or solution is prepared for customers, with support for future improvements.</p></div>
-</div>
-</section>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+                ☰
+            </button>
 
-<section class="contact section" id="contact">
-<div class="contact-box">
-<p class="eyebrow">LET'S WORK TOGETHER</p>
-<h2>Ready to Build Your <span>Next Project?</span></h2>
-<p>Tell me about your business and what you would like to build. I'll help you identify a practical starting point.</p>
-<div class="contact-actions">
-<a class="btn btn-gold" href="mailto:Bailernest62@gmail.com?subject=Web%20%26%20AI%20Project%20Inquiry">EMAIL ME</a>
-<a class="btn btn-outline" href="https://github.com/Ernestbail" target="_blank" rel="noopener">GITHUB</a>
-</div>
-<p class="contact-note">Replace the email address above with your preferred business email before publishing.</p>
-</div>
-</section>
-</main>
-<footer><p>© 2026 Ernest Baidoo Web & AI Solutions. All rights reserved.</p></footer>
-<script src="script.js"></script>
+            <nav id="navMenu">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <div class="hero-badge">
+                        WEB DEVELOPMENT • AI SOLUTIONS
+                    </div>
+
+                    <h1>
+                        We Build
+                        <span>Websites</span>
+                        That Help Businesses Grow.
+                    </h1>
+
+                    <p>
+                        BailTech AI creates modern, professional websites and
+                        intelligent digital solutions designed to help businesses
+                        establish their online presence, connect with customers,
+                        and grow.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#contact" class="btn btn-primary">
+                            Start Your Project
+                        </a>
+
+                        <a href="#portfolio" class="btn btn-secondary">
+                            View Our Work
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-card">
+
+                    <div class="window-top">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="dashboard-preview">
+
+                        <div class="preview-label">
+                            BAILTECH AI
+                        </div>
+
+                        <h3>
+                            Digital Solutions
+                            <br>
+                            Built For Business.
+                        </h3>
+
+                        <div class="preview-line"></div>
+
+                        <div class="preview-grid">
+
+                            <div>
+                                <strong>Web</strong>
+                                <small>Development</small>
+                            </div>
+
+                            <div>
+                                <strong>AI</strong>
+                                <small>Solutions</small>
+                            </div>
+
+                            <div>
+                                <strong>UX</strong>
+                                <small>Design</small>
+                            </div>
+
+                            <div>
+                                <strong>SEO</strong>
+                                <small>Growth</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TRUST STRIP
+        ========================== -->
+
+        <section class="trust-strip">
+
+            <div class="container trust-content">
+
+                <div>
+                    <strong>Modern Design</strong>
+                    <span>Professional websites</span>
+                </div>
+
+                <div>
+                    <strong>Mobile Ready</strong>
+                    <span>Works across devices</span>
+                </div>
+
+                <div>
+                    <strong>Business Focused</strong>
+                    <span>Built around your goals</span>
+                </div>
+
+                <div>
+                    <strong>AI Ready</strong>
+                    <span>Smart technology solutions</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SERVICES
+        ========================== -->
+
+        <section class="section services" id="services">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">WHAT WE DO</span>
+
+                    <h2>
+                        Digital Solutions
+                        <span>For Your Business</span>
+                    </h2>
+
+                    <p>
+                        From your first website to advanced AI-powered
+                        solutions, we help businesses build a stronger digital presence.
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+                    <article class="service-card">
+
+                        <div class="service-number">01</div>
+
+                        <div class="service-icon">⌘</div>
+
+                        <h3>Business Websites</h3>
+
+                        <p>
+                            Professional, responsive websites designed to
+                            showcase your business and turn visitors into customers.
+                        </p>
+
+                        <ul>
+                            <li>Custom design</li>
+                            <li>Mobile responsive</li>
+                            <li>Business pages</li>
+                            <li>Contact forms</li>
+                        </ul>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-number">02</div>
+
+                        <div class="service-icon">✦</div>
+
+                        <h3>AI Solutions</h3>
+
+                        <p>
+                            Add intelligent technology to your business with
+                            AI-powered tools and automation.
+                        </p>
+
+                        <ul>
+                            <li>AI assistants</li>
+                            <li>Chatbots</li>
+                            <li>Business automation</li>
+                            <li>AI integrations</li>
+                        </ul>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-number">03</div>
+
+                        <div class="service-icon">↗</div>
+
+                        <h3>Website Redesign</h3>
+
+                        <p>
+                            Give an outdated website a modern appearance,
+                            better usability, and improved mobile experience.
+                        </p>
+
+                        <ul>
+                            <li>Modern redesign</li>
+                            <li>Performance improvements</li>
+                            <li>Mobile optimization</li>
+                            <li>Better user experience</li>
+                        </ul>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-number">04</div>
+
+                        <div class="service-icon">◎</div>
+
+                        <h3>Business Features</h3>
+
+                        <p>
+                            Connect your website with the tools your business
+                            needs to operate more efficiently.
+                        </p>
+
+                        <ul>
+                            <li>Online booking</li>
+                            <li>Payment integration</li>
+                            <li>Forms</li>
+                            <li>Social media integration</li>
+                        </ul>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROCESS
+        ========================== -->
+
+        <section class="section process-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">OUR PROCESS</span>
+
+                    <h2>
+                        From Idea
+                        <span>To Launch</span>
+                    </h2>
+
+                    <p>
+                        We keep the process simple and focused on your business.
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+                    <div class="process-item">
+
+                        <div class="process-circle">01</div>
+
+                        <h3>Discover</h3>
+
+                        <p>
+                            We learn about your business, customers,
+                            goals, and what you need your website to accomplish.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-item">
+
+                        <div class="process-circle">02</div>
+
+                        <h3>Design</h3>
+
+                        <p>
+                            We create a clean, professional design that
+                            represents your brand and speaks to your customers.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-item">
+
+                        <div class="process-circle">03</div>
+
+                        <h3>Build</h3>
+
+                        <p>
+                            We develop the website and integrate the
+                            features your business needs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-item">
+
+                        <div class="process-circle">04</div>
+
+                        <h3>Launch</h3>
+
+                        <p>
+                            Your website goes live and becomes part of
+                            your business's digital presence.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PORTFOLIO
+        ========================== -->
+
+        <section class="section portfolio" id="portfolio">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">OUR WORK</span>
+
+                    <h2>
+                        Projects We're
+                        <span>Building</span>
+                    </h2>
+
+                    <p>
+                        A growing collection of websites and technology projects.
+                    </p>
+
+                </div>
+
+
+                <div class="portfolio-grid">
+
+                    <article class="portfolio-card featured-project">
+
+                        <div class="project-preview bailtech-preview">
+
+                            <div class="project-browser">
+
+                                <div class="browser-bar">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+
+                                <div class="project-screen">
+
+                                    <div class="screen-logo">
+                                        BAILTECH <b>AI</b>
+                                    </div>
+
+                                    <div class="screen-title">
+                                        Websites & AI Solutions
+                                    </div>
+
+                                    <div class="screen-boxes">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="project-info">
+
+                            <span>01 • COMPANY PROJECT</span>
+
+                            <h3>BailTech AI</h3>
+
+                            <p>
+                                Our own technology and web-development platform,
+                                designed to demonstrate modern web and AI capabilities.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>Web Development</span>
+                                <span>AI</span>
+                                <span>Python</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="portfolio-card">
+
+                        <div class="project-preview beauty-preview">
+
+                            <div class="beauty-content">
+                                <small>THE FACE</small>
+                                <strong>DOCTRESS</strong>
+
+                                <div class="beauty-line"></div>
+
+                                <span>BEAUTY • MAKEUP • SERVICES</span>
+                            </div>
+
+                        </div>
+
+                        <div class="project-info">
+
+                            <span>02 • BUSINESS WEBSITE</span>
+
+                            <h3>THE FACE DOCTRESS</h3>
+
+                            <p>
+                                A professional beauty business website featuring
+                                services, booking information, gallery, policies,
+                                and customer-focused design.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>Web Design</span>
+                                <span>Booking</span>
+                                <span>Business</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="portfolio-card coming-project">
+
+                        <div class="coming-content">
+
+                            <div class="coming-icon">+</div>
+
+                            <h3>Your Business Could Be Here</h3>
+
+                            <p>
+                                We're building our portfolio one business
+                                at a time.
+                            </p>
+
+                            <a href="#contact">
+                                Start a Project →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section class="section about" id="about">
+
+            <div class="container about-grid">
+
+                <div class="about-image">
+
+                    <div class="about-card">
+
+                        <div class="about-initials">
+                            EB
+                        </div>
+
+                        <div>
+                            <strong>Ernest Baidoo</strong>
+                            <span>Founder & Developer</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <span class="eyebrow">ABOUT BAILTECH AI</span>
+
+                    <h2>
+                        Technology Built
+                        <span>With Purpose.</span>
+                    </h2>
+
+                    <p>
+                        BailTech AI was created to help businesses build a
+                        stronger presence online through modern web development
+                        and emerging AI technology.
+                    </p>
+
+                    <p>
+                        Behind BailTech AI is <strong>Ernest Baidoo</strong>,
+                        an AI-focused developer with a passion for combining
+                        technology, business, and practical solutions.
+                    </p>
+
+                    <p>
+                        The goal is simple: create technology that is useful,
+                        professional, accessible, and built around the needs
+                        of each business.
+                    </p>
+
+                    <div class="about-highlights">
+
+                        <div>
+                            <strong>01</strong>
+                            <span>Business First</span>
+                        </div>
+
+                        <div>
+                            <strong>02</strong>
+                            <span>Modern Technology</span>
+                        </div>
+
+                        <div>
+                            <strong>03</strong>
+                            <span>AI Focused</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section class="cta">
+
+            <div class="container cta-content">
+
+                <div>
+
+                    <span class="eyebrow">READY TO BUILD?</span>
+
+                    <h2>
+                        Let's Build Something
+                        <span>Great Together.</span>
+                    </h2>
+
+                    <p>
+                        Have a business that needs a professional website?
+                        Let's talk about your idea.
+                    </p>
+
+                </div>
+
+                <a href="#contact" class="btn btn-white">
+                    Start Your Project →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section class="section contact" id="contact">
+
+            <div class="container contact-grid">
+
+                <div class="contact-info">
+
+                    <span class="eyebrow">GET IN TOUCH</span>
+
+                    <h2>
+                        Let's Talk About
+                        <span>Your Business.</span>
+                    </h2>
+
+                    <p>
+                        Tell us what you're looking to build. Whether you need
+                        a new website, a redesign, or an AI-powered solution,
+                        we'd love to hear about your project.
+                    </p>
+
+
+                    <div class="contact-details">
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">@</div>
+
+                            <div>
+                                <span>Email</span>
+                                <strong>hello@bailtechai.com</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-detail">
+
+                            <div class="contact-icon">⌂</div>
+
+                            <div>
+                                <span>Service</span>
+                                <strong>Web & AI Solutions</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <form class="contact-form" id="contactForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="name">Your Name</label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">Email Address</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="business">Business Name</label>
+
+                        <input
+                            type="text"
+                            id="business"
+                            name="business"
+                            placeholder="Your business name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="service">What Do You Need?</label>
+
+                        <select id="service" name="service">
+
+                            <option value="">
+                                Select a service
+                            </option>
+
+                            <option value="new-website">
+                                New Business Website
+                            </option>
+
+                            <option value="redesign">
+                                Website Redesign
+                            </option>
+
+                            <option value="ai">
+                                AI Solution
+                            </option>
+
+                            <option value="booking">
+                                Booking / Payment Integration
+                            </option>
+
+                            <option value="other">
+                                Something Else
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">Tell Us About Your Project</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            placeholder="Tell us what you would like to build..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary form-submit">
+                        Send Project Request →
+                    </button>
+
+                    <p class="form-note">
+                        We will review your request and get back to you.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <a href="#home" class="logo footer-logo">
+                    <span>BAILTECH</span> AI
+                </a>
+
+                <p>
+                    Websites & AI solutions for modern businesses.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Explore</h4>
+
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>Services</h4>
+
+                <a href="#services">Business Websites</a>
+                <a href="#services">AI Solutions</a>
+                <a href="#services">Website Redesign</a>
+                <a href="#services">Business Features</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <p>
+                © 2026 BailTech AI. All rights reserved.
+            </p>
+
+            <p>
+                Founded & Developed by Ernest Baidoo
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
