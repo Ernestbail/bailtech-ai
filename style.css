@@ -1648,3 +1648,92 @@ nav a:hover {
         padding: 25px;
     }
 }
+
+/* =========================================
+   FOUNDER PHOTO
+========================================= */
+
+.about-photo-card {
+    width: 100%;
+    overflow: hidden;
+    background: white;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.about-photo-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.about-photo-info {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px;
+}
+
+.about-photo-info strong {
+    font-size: 1rem;
+    color: var(--dark);
+}
+
+.about-photo-info span {
+    margin-top: 4px;
+    color: var(--gray);
+    font-size: 0.75rem;
+}
+
+
+/* =========================================
+   CLICKABLE PORTFOLIO PROJECT
+========================================= */
+
+.portfolio-project-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.portfolio-project-link .project-info {
+    transition: background 0.25s ease;
+}
+
+.portfolio-project-link:hover .project-info {
+    background: #fafbfd;
+}
+
+.project-visit {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--blue);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.portfolio-project-link:hover .project-visit {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MOBILE FOUNDER PHOTO
+========================================= */
+
+@media (max-width: 750px) {
+
+    .about-photo-card img {
+        height: 360px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .about-photo-card img {
+        height: 320px;
+    }
+
+}
