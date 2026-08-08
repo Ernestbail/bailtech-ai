@@ -3,7 +3,6 @@
    WHITE / BLUE / GRAY DESIGN
 ========================================= */
 
-
 /* =========================================
    RESET
 ========================================= */
@@ -136,6 +135,10 @@ nav a:hover {
     color: var(--dark);
 
     cursor: pointer;
+
+    padding: 5px;
+
+    line-height: 1;
 }
 
 
@@ -647,6 +650,15 @@ nav a:hover {
     border-radius: 14px;
 
     box-shadow: 0 8px 30px rgba(22, 47, 84, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
 }
 
 .featured-project {
@@ -794,6 +806,32 @@ nav a:hover {
 
 
 /* =========================================
+   PROJECT LINK
+========================================= */
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 22px;
+
+    color: var(--blue);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.project-link:hover {
+    color: var(--blue-dark);
+    transform: translateX(4px);
+}
+
+
+/* =========================================
    FACE DOCTRESS PROJECT
 ========================================= */
 
@@ -924,67 +962,86 @@ nav a:hover {
     gap: 90px;
 }
 
+
+/* =========================================
+   ABOUT PROFESSIONAL PHOTO
+========================================= */
+
 .about-image {
-    min-height: 440px;
+    min-height: 500px;
 
     display: flex;
     align-items: flex-end;
 
-    padding: 30px;
+    padding: 0;
 
     background:
         linear-gradient(145deg, #dceaff, #f4f8fd);
 
     border-radius: 18px;
+
+    overflow: hidden;
 }
 
-.about-card {
+.about-photo-card {
+    position: relative;
+
     width: 100%;
+    height: 500px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+}
+
+.about-photo-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center top;
+}
+
+.about-photo-info {
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
 
     display: flex;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column;
 
-    padding: 18px;
+    padding: 18px 20px;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.94);
 
-    border: 1px solid #dce4ed;
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 10px;
 
-    box-shadow: var(--shadow);
+    box-shadow: 0 15px 35px rgba(22, 47, 84, 0.15);
+
+    backdrop-filter: blur(8px);
 }
 
-.about-initials {
-    width: 48px;
-    height: 48px;
+.about-photo-info strong {
+    color: var(--dark);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: var(--blue);
-    color: white;
-
-    border-radius: 8px;
-
-    font-weight: 800;
+    font-size: 0.95rem;
 }
 
-.about-card strong,
-.about-card span {
-    display: block;
-}
+.about-photo-info span {
+    margin-top: 3px;
 
-.about-card strong {
-    font-size: 0.9rem;
-}
-
-.about-card span {
     color: var(--gray);
 
-    font-size: 0.7rem;
+    font-size: 0.72rem;
 }
+
+
+/* =========================================
+   ABOUT CONTENT
+========================================= */
 
 .about-content > p {
     margin-top: 20px;
@@ -1299,7 +1356,7 @@ nav a:hover {
 
 
 /* =========================================
-   RESPONSIVE
+   RESPONSIVE - TABLET
 ========================================= */
 
 @media (max-width: 1000px) {
@@ -1328,7 +1385,11 @@ nav a:hover {
     }
 
     .about-image {
-        min-height: 350px;
+        min-height: 400px;
+    }
+
+    .about-photo-card {
+        height: 400px;
     }
 
     .contact-grid {
@@ -1338,15 +1399,44 @@ nav a:hover {
 }
 
 
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
 @media (max-width: 750px) {
 
     .nav-container {
         min-height: 68px;
     }
 
+    /* HAMBURGER BUTTON */
+
     .menu-toggle {
         display: block;
+
+        width: 44px;
+        height: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 8px;
+
+        transition:
+            background 0.2s ease,
+            color 0.2s ease;
     }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus {
+        background: var(--blue-light);
+        color: var(--blue);
+
+        outline: none;
+    }
+
+    /* MOBILE NAVIGATION */
 
     nav {
         position: absolute;
@@ -1366,6 +1456,8 @@ nav a:hover {
         border-bottom: 1px solid var(--border);
 
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+
+        animation: mobileMenuFade 0.2s ease;
     }
 
     nav.active {
@@ -1378,6 +1470,22 @@ nav a:hover {
         padding: 15px 5%;
 
         border-top: 1px solid #f0f2f5;
+    }
+
+    nav a:hover {
+        background: var(--blue-light);
+    }
+
+    @keyframes mobileMenuFade {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .hero {
@@ -1440,10 +1548,18 @@ nav a:hover {
 }
 
 
+/* =========================================
+   RESPONSIVE - SMALL MOBILE
+========================================= */
+
 @media (max-width: 500px) {
 
     .container {
         width: 90%;
+    }
+
+    .logo {
+        font-size: 1.25rem;
     }
 
     .hero h1 {
@@ -1482,6 +1598,24 @@ nav a:hover {
         grid-template-columns: 1fr;
     }
 
+    /* ABOUT PHOTO */
+
+    .about-image {
+        min-height: 380px;
+    }
+
+    .about-photo-card {
+        height: 380px;
+    }
+
+    .about-photo-info {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+
+        padding: 15px 16px;
+    }
+
     .about-highlights {
         flex-direction: column;
     }
@@ -1508,5 +1642,9 @@ nav a:hover {
 
     .beauty-content strong {
         font-size: 1.8rem;
+    }
+
+    .project-info {
+        padding: 25px;
     }
 }
