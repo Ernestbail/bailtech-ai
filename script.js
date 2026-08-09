@@ -1,128 +1,288 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================
+BAILTECH AI
+MAIN JAVASCRIPT
+========================================= */
 
-    const menuToggle = document.getElementById("menuToggle");
-    const navMenu = document.getElementById("navMenu");
+/* =========================================
+MOBILE HAMBURGER MENU
+========================================= */
 
-    if (menuToggle && navMenu) {
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
 
-        menuToggle.addEventListener("click", function () {
+if (menuToggle && navMenu) {
 
-            navMenu.classList.toggle("active");
+```
+menuToggle.addEventListener("click", function () {
 
-            const isOpen = navMenu.classList.contains("active");
+    navMenu.classList.toggle("active");
 
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close navigation" : "Open navigation"
-            );
+    const isOpen = navMenu.classList.contains("active");
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
+    menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+    );
 
-            menuToggle.textContent = isOpen ? "✕" : "☰";
-        });
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+    );
+
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+
+});
 
 
-        // Close menu when a navigation link is clicked
-        const navLinks = navMenu.querySelectorAll("a");
+/* Close menu when a navigation link is clicked */
 
-        navLinks.forEach(function (link) {
+const navLinks = navMenu.querySelectorAll("a");
 
-            link.addEventListener("click", function () {
+navLinks.forEach(function (link) {
 
-                navMenu.classList.remove("active");
+    link.addEventListener("click", function () {
 
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
+        navMenu.classList.remove("active");
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
 
-                menuToggle.textContent = "☰";
-            });
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation"
+        );
 
-        });
+        menuToggle.textContent = "☰";
+
+    });
+
+});
+```
+
+}
+
+/* =========================================
+CONTACT FORM
+========================================= */
+
+const contactForm = document.getElementById("contactForm");
+const formSuccess = document.getElementById("formSuccess");
+const contactSubmit = document.getElementById("contactSubmit");
+
+if (contactForm) {
+
+```
+contactForm.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    if (contactSubmit) {
+
+        contactSubmit.disabled = true;
+
+        contactSubmit.textContent = "Sending...";
 
     }
 
+    if (formSuccess) {
 
-    // Contact form
-    const contactForm = document.getElementById("contactForm");
+        formSuccess.textContent = "";
 
-    if (contactForm) {
+    }
 
-        contactForm.addEventListener("submit", function (event) {
+    try {
 
-            event.preventDefault();
-
-            const submitButton =
-                contactForm.querySelector(".form-submit");
-
-            if (submitButton) {
-                submitButton.textContent = "Sending...";
-                submitButton.disabled = true;
-            }
-
-            /*
-             * Formspree handles the actual email submission.
-             * Your form should have:
-             *
-             * action="https://formspree.io/f/mrpzejzg"
-             * method="POST"
-             */
-
-            fetch(contactForm.action, {
+        const response = await fetch(
+            contactForm.action,
+            {
                 method: "POST",
-                body: new FormData(contactForm),
+                body: formData,
                 headers: {
                     "Accept": "application/json"
                 }
-            })
-            .then(function (response) {
+            }
+        );
 
-                if (response.ok) {
 
-                    alert(
-                        "Thank you! Your project request has been sent successfully."
-                    );
+        if (response.ok) {
 
-                    contactForm.reset();
+            contactForm.reset();
 
-                } else {
+            if (formSuccess) {
 
-                    alert(
-                        "There was a problem sending your request. Please try again."
-                    );
+                formSuccess.textContent =
+                    "Thank you! Your project request has been sent successfully. We will get back to you soon.";
 
+            }
+
+        } else {
+
+            throw new Error("Form submission failed.");
+
+        }
+
+    } catch (error) {
+
+        if (formSuccess) {
+
+            formSuccess.textContent =
+                "Something went wrong. Please try again or contact us directly by email.";
+
+        }
+
+    } finally {
+
+        if (contactSubmit) {
+
+            contactSubmit.disabled = false;
+
+            contactSubmit.textContent =
+                "Send Project Request →";
+
+        }
+
+    }
+
+});
+```
+
+}
+
+/* =========================================
+REVIEW FORM
+========================================= */
+
+const reviewForm = document.getElementById("reviewForm");
+const reviewSuccess = document.getElementById("reviewSuccess");
+const reviewSubmit = document.getElementById("reviewSubmit");
+
+if (reviewForm) {
+
+```
+reviewForm.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const formData = new FormData(reviewForm);
+
+    if (reviewSubmit) {
+
+        reviewSubmit.disabled = true;
+
+        reviewSubmit.textContent = "Submitting...";
+
+    }
+
+    if (reviewSuccess) {
+
+        reviewSuccess.textContent = "";
+
+    }
+
+
+    try {
+
+        const response = await fetch(
+            reviewForm.action,
+            {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "application/json"
                 }
+            }
+        );
 
-            })
-            .catch(function () {
 
-                alert(
-                    "There was a problem connecting to the email service. Please try again."
-                );
+        if (response.ok) {
 
-            })
-            .finally(function () {
+            reviewForm.reset();
 
-                if (submitButton) {
-                    submitButton.textContent =
-                        "Send Project Request →";
+            if (reviewSuccess) {
 
-                    submitButton.disabled = false;
-                }
+                reviewSuccess.textContent =
+                    "Thank you for your review! Your review has been submitted for approval.";
 
-            });
+            }
 
+        } else {
+
+            throw new Error("Review submission failed.");
+
+        }
+
+    } catch (error) {
+
+        if (reviewSuccess) {
+
+            reviewSuccess.textContent =
+                "We could not submit your review. Please try again.";
+
+        }
+
+    } finally {
+
+        if (reviewSubmit) {
+
+            reviewSubmit.disabled = false;
+
+            reviewSubmit.textContent =
+                "Submit Review →";
+
+        }
+
+    }
+
+});
+```
+
+}
+
+/* =========================================
+SMOOTH SCROLL
+========================================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+
+```
+link.addEventListener("click", function (event) {
+
+    const targetId = this.getAttribute("href");
+
+    if (!targetId || targetId === "#") {
+        return;
+    }
+
+    const target = document.querySelector(targetId);
+
+    if (target) {
+
+        event.preventDefault();
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
         });
 
     }
+
+});
+```
+
+});
+
+/* =========================================
+EXTERNAL LINKS
+========================================= */
+
+document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
+
+```
+link.setAttribute("rel", "noopener noreferrer");
+```
 
 });
