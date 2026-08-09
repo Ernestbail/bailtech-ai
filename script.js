@@ -1,71 +1,100 @@
-/* =========================================
-BAILTECH AI
-MAIN JAVASCRIPT
-========================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-/* =========================================
-MOBILE HAMBURGER MENU
-========================================= */
+```
+/* ================================
+   MOBILE HAMBURGER MENU
+================================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 
 if (menuToggle && navMenu) {
 
-```
-menuToggle.addEventListener("click", function () {
+    menuToggle.addEventListener("click", function (event) {
 
-    navMenu.classList.toggle("active");
+        event.preventDefault();
+        event.stopPropagation();
 
-    const isOpen = navMenu.classList.contains("active");
+        navMenu.classList.toggle("active");
 
-    menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-    );
-
-    menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
-    );
-
-    menuToggle.textContent = isOpen ? "✕" : "☰";
-
-});
-
-
-/* Close menu when a navigation link is clicked */
-
-const navLinks = navMenu.querySelectorAll("a");
-
-navLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navMenu.classList.remove("active");
+        const isOpen = navMenu.classList.contains("active");
 
         menuToggle.setAttribute(
             "aria-expanded",
-            "false"
+            isOpen ? "true" : "false"
         );
 
         menuToggle.setAttribute(
             "aria-label",
-            "Open navigation"
+            isOpen ? "Close navigation" : "Open navigation"
         );
 
-        menuToggle.textContent = "☰";
+        menuToggle.textContent = isOpen ? "✕" : "☰";
 
     });
 
-});
-```
+
+    /* Close menu after clicking a navigation link */
+
+    const navLinks = navMenu.querySelectorAll("a");
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navMenu.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+
+            menuToggle.textContent = "☰";
+
+        });
+
+    });
+
+
+    /* Close menu if user clicks outside */
+
+    document.addEventListener("click", function (event) {
+
+        if (
+            navMenu.classList.contains("active") &&
+            !navMenu.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+
+            navMenu.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+
+            menuToggle.textContent = "☰";
+
+        }
+
+    });
 
 }
 
-/* =========================================
-CONTACT FORM
-========================================= */
+
+/* ================================
+   CONTACT FORM
+================================= */
 
 const contactForm = document.getElementById("contactForm");
 const formSuccess = document.getElementById("formSuccess");
@@ -73,88 +102,80 @@ const contactSubmit = document.getElementById("contactSubmit");
 
 if (contactForm) {
 
-```
-contactForm.addEventListener("submit", async function (event) {
+    contactForm.addEventListener("submit", async function (event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const formData = new FormData(contactForm);
+        const formData = new FormData(contactForm);
 
-    if (contactSubmit) {
+        if (contactSubmit) {
+            contactSubmit.disabled = true;
+            contactSubmit.textContent = "Sending...";
+        }
 
-        contactSubmit.disabled = true;
+        if (formSuccess) {
+            formSuccess.textContent = "";
+        }
 
-        contactSubmit.textContent = "Sending...";
+        try {
 
-    }
-
-    if (formSuccess) {
-
-        formSuccess.textContent = "";
-
-    }
-
-    try {
-
-        const response = await fetch(
-            contactForm.action,
-            {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "Accept": "application/json"
+            const response = await fetch(
+                contactForm.action,
+                {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
                 }
+            );
+
+            if (response.ok) {
+
+                contactForm.reset();
+
+                if (formSuccess) {
+
+                    formSuccess.textContent =
+                        "Thank you! Your project request has been sent successfully.";
+
+                }
+
+            } else {
+
+                throw new Error("Form submission failed.");
+
             }
-        );
 
-
-        if (response.ok) {
-
-            contactForm.reset();
+        } catch (error) {
 
             if (formSuccess) {
 
                 formSuccess.textContent =
-                    "Thank you! Your project request has been sent successfully. We will get back to you soon.";
+                    "Something went wrong. Please try again or contact us directly.";
 
             }
 
-        } else {
+        } finally {
 
-            throw new Error("Form submission failed.");
+            if (contactSubmit) {
 
-        }
+                contactSubmit.disabled = false;
+                contactSubmit.textContent =
+                    "Send Project Request →";
 
-    } catch (error) {
-
-        if (formSuccess) {
-
-            formSuccess.textContent =
-                "Something went wrong. Please try again or contact us directly by email.";
+            }
 
         }
 
-    } finally {
-
-        if (contactSubmit) {
-
-            contactSubmit.disabled = false;
-
-            contactSubmit.textContent =
-                "Send Project Request →";
-
-        }
-
-    }
-
-});
-```
+    });
 
 }
 
-/* =========================================
-REVIEW FORM
-========================================= */
+
+/* ================================
+   REVIEW FORM
+================================= */
 
 const reviewForm = document.getElementById("reviewForm");
 const reviewSuccess = document.getElementById("reviewSuccess");
@@ -162,127 +183,111 @@ const reviewSubmit = document.getElementById("reviewSubmit");
 
 if (reviewForm) {
 
-```
-reviewForm.addEventListener("submit", async function (event) {
+    reviewForm.addEventListener("submit", async function (event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const formData = new FormData(reviewForm);
+        const formData = new FormData(reviewForm);
 
-    if (reviewSubmit) {
+        if (reviewSubmit) {
 
-        reviewSubmit.disabled = true;
+            reviewSubmit.disabled = true;
+            reviewSubmit.textContent = "Submitting...";
 
-        reviewSubmit.textContent = "Submitting...";
+        }
 
-    }
+        if (reviewSuccess) {
 
-    if (reviewSuccess) {
+            reviewSuccess.textContent = "";
 
-        reviewSuccess.textContent = "";
+        }
 
-    }
+        try {
 
-
-    try {
-
-        const response = await fetch(
-            reviewForm.action,
-            {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "Accept": "application/json"
+            const response = await fetch(
+                reviewForm.action,
+                {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
                 }
+            );
+
+            if (response.ok) {
+
+                reviewForm.reset();
+
+                if (reviewSuccess) {
+
+                    reviewSuccess.textContent =
+                        "Thank you! Your review has been submitted for approval.";
+
+                }
+
+            } else {
+
+                throw new Error("Review submission failed.");
+
             }
-        );
 
-
-        if (response.ok) {
-
-            reviewForm.reset();
+        } catch (error) {
 
             if (reviewSuccess) {
 
                 reviewSuccess.textContent =
-                    "Thank you for your review! Your review has been submitted for approval.";
+                    "We could not submit your review. Please try again.";
 
             }
 
-        } else {
+        } finally {
 
-            throw new Error("Review submission failed.");
+            if (reviewSubmit) {
 
-        }
+                reviewSubmit.disabled = false;
+                reviewSubmit.textContent =
+                    "Submit Review →";
 
-    } catch (error) {
-
-        if (reviewSuccess) {
-
-            reviewSuccess.textContent =
-                "We could not submit your review. Please try again.";
+            }
 
         }
 
-    } finally {
-
-        if (reviewSubmit) {
-
-            reviewSubmit.disabled = false;
-
-            reviewSubmit.textContent =
-                "Submit Review →";
-
-        }
-
-    }
-
-});
-```
+    });
 
 }
 
-/* =========================================
-SMOOTH SCROLL
-========================================= */
+
+/* ================================
+   SMOOTH SCROLLING
+================================= */
 
 document.querySelectorAll('a[href^="#"]').forEach(function (link) {
 
-```
-link.addEventListener("click", function (event) {
+    link.addEventListener("click", function (event) {
 
-    const targetId = this.getAttribute("href");
+        const targetId = this.getAttribute("href");
 
-    if (!targetId || targetId === "#") {
-        return;
-    }
+        if (!targetId || targetId === "#") {
+            return;
+        }
 
-    const target = document.querySelector(targetId);
+        const target = document.querySelector(targetId);
 
-    if (target) {
+        if (target) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
-    }
+        }
 
-});
-```
+    });
 
 });
-
-/* =========================================
-EXTERNAL LINKS
-========================================= */
-
-document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
-
-```
-link.setAttribute("rel", "noopener noreferrer");
 ```
 
 });
