@@ -1854,3 +1854,497 @@ nav a:hover {
     }
 
 }
+
+/* =========================================================
+   MOBILE NAVIGATION + MOBILE FIXES
+========================================================= */
+
+/* Prevent horizontal scrolling */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Make images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Remove unwanted outlines/borders */
+button,
+input,
+textarea,
+select {
+    outline: none;
+}
+
+/* =========================================================
+   HAMBURGER
+========================================================= */
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #d4af37;
+    border-radius: 2px;
+    transition: transform 0.3s ease,
+                opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Page */
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+
+    .navbar {
+        width: 100%;
+        position: relative;
+        z-index: 9999;
+    }
+
+    .nav-container {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    /* Logo */
+    .logo {
+        white-space: nowrap;
+        font-size: 20px;
+    }
+
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: flex;
+        position: relative;
+        z-index: 10001;
+    }
+
+
+    /* =====================================================
+       MOBILE NAV MENU
+    ===================================================== */
+
+    #navMenu {
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 10px 20px 20px;
+
+        background: #000;
+
+        border-top: 1px solid rgba(212, 175, 55, 0.25);
+
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
+
+        z-index: 10000;
+    }
+
+
+    /* Open menu */
+    #navMenu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    /* Navigation links */
+    #navMenu a {
+        display: block;
+
+        width: 100%;
+
+        padding: 14px 10px;
+
+        color: #fff;
+        text-decoration: none;
+
+        border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+
+        font-size: 16px;
+
+        transition:
+            color 0.2s ease,
+            background 0.2s ease;
+    }
+
+    #navMenu a:last-child {
+        border-bottom: none;
+    }
+
+    #navMenu a:hover,
+    #navMenu a:focus {
+        color: #d4af37;
+        background: rgba(212, 175, 55, 0.05);
+    }
+
+
+    /* =====================================================
+       HAMBURGER ANIMATION
+    ===================================================== */
+
+    .menu-toggle.active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(38px, 10vw, 58px);
+        line-height: 1.05;
+        word-wrap: break-word;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       TRUST STRIP
+    ===================================================== */
+
+    .trust-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+
+    /* =====================================================
+       SECTION HEADINGS
+    ===================================================== */
+
+    .section-heading {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(32px, 8vw, 46px);
+        line-height: 1.1;
+    }
+
+
+    /* =====================================================
+       SERVICES
+    ===================================================== */
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+
+
+    /* =====================================================
+       PROCESS
+    ===================================================== */
+
+    .process-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+
+    /* =====================================================
+       PORTFOLIO
+    ===================================================== */
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .portfolio-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .project-preview {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .project-browser {
+        max-width: 100%;
+    }
+
+    .project-screen {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 40px;
+    }
+
+    .about-image,
+    .about-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .about-photo-card {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+
+    /* =====================================================
+       REVIEWS
+    ===================================================== */
+
+    .reviews-layout {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .review-form-card,
+    .public-reviews {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .cta-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .cta-content .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+
+    /* =====================================================
+       REMOVE UNWANTED EDGE/DOTTED EFFECTS
+    ===================================================== */
+
+    section,
+    header,
+    main,
+    footer,
+    article,
+    div {
+        max-width: 100%;
+    }
+
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .nav-container {
+        min-height: 64px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .hero-text h1 {
+        font-size: 38px;
+    }
+
+    .trust-content {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card,
+    .portfolio-card,
+    .review-form-card {
+        padding: 22px;
+    }
+
+    .section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
