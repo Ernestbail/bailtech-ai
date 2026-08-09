@@ -1,244 +1,1838 @@
-document.addEventListener("DOMContentLoaded", function () {
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
 
 ```
-/* =========================================
-   MOBILE HAMBURGER MENU
-========================================= */
+<meta charset="UTF-8">
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-if (menuToggle && navMenu) {
+<title>BailTech AI | Websites & AI Solutions for Businesses</title>
 
-    menuToggle.addEventListener("click", function () {
+<meta
+    name="description"
+    content="BailTech AI builds professional websites and AI-powered digital solutions for modern businesses."
+>
 
-        navMenu.classList.toggle("active");
+<link rel="stylesheet" href="style.css">
 
-        const isOpen = navMenu.classList.contains("active");
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-        menuToggle.setAttribute("aria-expanded", isOpen);
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen ? "Close navigation" : "Open navigation"
-        );
-
-        menuToggle.textContent = isOpen ? "✕" : "☰";
-
-    });
-
-
-    /* Close menu after clicking a navigation link */
-
-    const navLinks = navMenu.querySelectorAll("a");
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            navMenu.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation"
-            );
-
-            menuToggle.textContent = "☰";
-
-        });
-
-    });
-
-}
-
-
-/* =========================================
-   CONTACT FORM — FORMSPREE
-========================================= */
-
-const contactForm = document.getElementById("contactForm");
-const contactSubmit = document.getElementById("contactSubmit");
-const formSuccess = document.getElementById("formSuccess");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", async function (event) {
-
-        event.preventDefault();
-
-        if (contactSubmit) {
-            contactSubmit.disabled = true;
-            contactSubmit.textContent = "Sending...";
-        }
-
-        if (formSuccess) {
-            formSuccess.textContent = "";
-        }
-
-        try {
-
-            const response = await fetch(
-                contactForm.action,
-                {
-                    method: "POST",
-                    body: new FormData(contactForm),
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                }
-            );
-
-            if (response.ok) {
-
-                if (formSuccess) {
-                    formSuccess.textContent =
-                        "Thank you! Your project request has been sent successfully. We will get back to you soon.";
-                }
-
-                contactForm.reset();
-
-                if (contactSubmit) {
-                    contactSubmit.textContent = "Request Sent ✓";
-                }
-
-            } else {
-
-                throw new Error("Form submission failed.");
-
-            }
-
-        } catch (error) {
-
-            if (formSuccess) {
-                formSuccess.textContent =
-                    "Something went wrong. Please try again or email Bailernest62@gmail.com.";
-            }
-
-            if (contactSubmit) {
-                contactSubmit.disabled = false;
-                contactSubmit.textContent =
-                    "Send Project Request →";
-            }
-
-        }
-
-    });
-
-}
-
-
-/* =========================================
-   REVIEW FORM — FORMSPREE
-========================================= */
-
-const reviewForm = document.getElementById("reviewForm");
-const reviewSubmit = document.getElementById("reviewSubmit");
-const reviewSuccess = document.getElementById("reviewSuccess");
-
-if (reviewForm) {
-
-    reviewForm.addEventListener("submit", async function (event) {
-
-        event.preventDefault();
-
-        if (reviewSubmit) {
-            reviewSubmit.disabled = true;
-            reviewSubmit.textContent = "Submitting...";
-        }
-
-        if (reviewSuccess) {
-            reviewSuccess.textContent = "";
-        }
-
-        try {
-
-            const response = await fetch(
-                reviewForm.action,
-                {
-                    method: "POST",
-                    body: new FormData(reviewForm),
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                }
-            );
-
-            if (response.ok) {
-
-                if (reviewSuccess) {
-                    reviewSuccess.textContent =
-                        "Thank you! Your review has been submitted successfully.";
-                }
-
-                reviewForm.reset();
-
-                if (reviewSubmit) {
-                    reviewSubmit.textContent = "Review Submitted ✓";
-                }
-
-            } else {
-
-                throw new Error("Review submission failed.");
-
-            }
-
-        } catch (error) {
-
-            if (reviewSuccess) {
-                reviewSuccess.textContent =
-                    "Something went wrong. Please try again.";
-            }
-
-            if (reviewSubmit) {
-                reviewSubmit.disabled = false;
-                reviewSubmit.textContent =
-                    "Submit Review →";
-            }
-
-        }
-
-    });
-
-}
-
-
-/* =========================================
-   SMOOTH SCROLL
-========================================= */
-
-const allLinks = document.querySelectorAll('a[href^="#"]');
-
-allLinks.forEach(function (link) {
-
-    link.addEventListener("click", function (event) {
-
-        const targetId = this.getAttribute("href");
-
-        if (
-            targetId &&
-            targetId !== "#" &&
-            document.querySelector(targetId)
-        ) {
-
-            event.preventDefault();
-
-            const target = document.querySelector(targetId);
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
-
-    });
-
-});
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
 ```
 
-});
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<header class="navbar">
+
+```
+<div class="container nav-container">
+
+    <a href="#home" class="logo">
+        <span>BAILTECH</span> AI
+    </a>
+
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false">
+
+        ☰
+
+    </button>
+
+
+    <nav id="navMenu">
+
+        <a href="#home">Home</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#portfolio">Portfolio</a>
+
+        <a href="#about">About</a>
+
+        <a href="#reviews">Reviews</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+</div>
+```
+
+</header>
+
+<!-- =========================
+     MAIN
+========================== -->
+
+<main>
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="hero" id="home">
+
+```
+<div class="container hero-content">
+
+
+    <div class="hero-text">
+
+        <div class="hero-badge">
+            WEB DEVELOPMENT • AI SOLUTIONS
+        </div>
+
+
+        <h1>
+
+            We Build
+            <span>Websites</span>
+            That Help Businesses Grow.
+
+        </h1>
+
+
+        <p>
+
+            BailTech AI creates modern, professional websites and
+            intelligent digital solutions designed to help businesses
+            establish their online presence, connect with customers,
+            and grow.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#contact"
+                class="btn btn-primary">
+
+                Start Your Project
+
+            </a>
+
+
+            <a
+                href="#portfolio"
+                class="btn btn-secondary">
+
+                View Our Work
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="hero-card">
+
+        <div class="window-top">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="dashboard-preview">
+
+            <div class="preview-label">
+                BAILTECH AI
+            </div>
+
+
+            <h3>
+
+                Digital Solutions
+                <br>
+                Built For Business.
+
+            </h3>
+
+
+            <div class="preview-line"></div>
+
+
+            <div class="preview-grid">
+
+                <div>
+
+                    <strong>Web</strong>
+
+                    <small>
+                        Development
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <strong>AI</strong>
+
+                    <small>
+                        Solutions
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <strong>UX</strong>
+
+                    <small>
+                        Design
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <strong>SEO</strong>
+
+                    <small>
+                        Growth
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     TRUST STRIP
+========================== -->
+
+<section class="trust-strip">
+
+```
+<div class="container trust-content">
+
+
+    <div>
+
+        <strong>
+            Modern Design
+        </strong>
+
+        <span>
+            Professional websites
+        </span>
+
+    </div>
+
+
+    <div>
+
+        <strong>
+            Mobile Ready
+        </strong>
+
+        <span>
+            Works across devices
+        </span>
+
+    </div>
+
+
+    <div>
+
+        <strong>
+            Business Focused
+        </strong>
+
+        <span>
+            Built around your goals
+        </span>
+
+    </div>
+
+
+    <div>
+
+        <strong>
+            AI Ready
+        </strong>
+
+        <span>
+            Smart technology solutions
+        </span>
+
+    </div>
+
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     SERVICES
+========================== -->
+
+<section
+    class="section services"
+    id="services">
+
+```
+<div class="container">
+
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            WHAT WE DO
+        </span>
+
+
+        <h2>
+
+            Digital Solutions
+            <span>For Your Business</span>
+
+        </h2>
+
+
+        <p>
+
+            From your first website to advanced AI-powered
+            solutions, we help businesses build a stronger
+            digital presence.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="services-grid">
+
+
+        <!-- SERVICE 1 -->
+
+        <article class="service-card">
+
+            <div class="service-number">
+                01
+            </div>
+
+
+            <div class="service-icon">
+                ⌘
+            </div>
+
+
+            <h3>
+                Business Websites
+            </h3>
+
+
+            <p>
+
+                Professional, responsive websites designed to
+                showcase your business and turn visitors into
+                customers.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Custom design
+                </li>
+
+                <li>
+                    Mobile responsive
+                </li>
+
+                <li>
+                    Business pages
+                </li>
+
+                <li>
+                    Contact forms
+                </li>
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- SERVICE 2 -->
+
+        <article class="service-card">
+
+            <div class="service-number">
+                02
+            </div>
+
+
+            <div class="service-icon">
+                ✦
+            </div>
+
+
+            <h3>
+                AI Solutions
+            </h3>
+
+
+            <p>
+
+                Add intelligent technology to your business
+                with AI-powered tools and automation.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    AI assistants
+                </li>
+
+                <li>
+                    Chatbots
+                </li>
+
+                <li>
+                    Business automation
+                </li>
+
+                <li>
+                    AI integrations
+                </li>
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- SERVICE 3 -->
+
+        <article class="service-card">
+
+            <div class="service-number">
+                03
+            </div>
+
+
+            <div class="service-icon">
+                ↗
+            </div>
+
+
+            <h3>
+                Website Redesign
+            </h3>
+
+
+            <p>
+
+                Give an outdated website a modern appearance,
+                better usability, and improved mobile experience.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Modern redesign
+                </li>
+
+                <li>
+                    Performance improvements
+                </li>
+
+                <li>
+                    Mobile optimization
+                </li>
+
+                <li>
+                    Better user experience
+                </li>
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- SERVICE 4 -->
+
+        <article class="service-card">
+
+            <div class="service-number">
+                04
+            </div>
+
+
+            <div class="service-icon">
+                ◎
+            </div>
+
+
+            <h3>
+                Business Features
+            </h3>
+
+
+            <p>
+
+                Connect your website with the tools your business
+                needs to operate more efficiently.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Online booking
+                </li>
+
+                <li>
+                    Payment integration
+                </li>
+
+                <li>
+                    Forms
+                </li>
+
+                <li>
+                    Social media integration
+                </li>
+
+            </ul>
+
+        </article>
+
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     PROCESS
+========================== -->
+
+<section class="section process-section">
+
+```
+<div class="container">
+
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            OUR PROCESS
+        </span>
+
+
+        <h2>
+
+            From Idea
+            <span>To Launch</span>
+
+        </h2>
+
+
+        <p>
+
+            We keep the process simple and focused
+            on your business.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="process-grid">
+
+
+        <div class="process-item">
+
+            <div class="process-circle">
+                01
+            </div>
+
+
+            <h3>
+                Discover
+            </h3>
+
+
+            <p>
+
+                We learn about your business, customers,
+                goals, and what you need your website
+                to accomplish.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="process-item">
+
+            <div class="process-circle">
+                02
+            </div>
+
+
+            <h3>
+                Design
+            </h3>
+
+
+            <p>
+
+                We create a clean, professional design
+                that represents your brand and speaks
+                to your customers.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="process-item">
+
+            <div class="process-circle">
+                03
+            </div>
+
+
+            <h3>
+                Build
+            </h3>
+
+
+            <p>
+
+                We develop the website and integrate
+                the features your business needs.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="process-item">
+
+            <div class="process-circle">
+                04
+            </div>
+
+
+            <h3>
+                Launch
+            </h3>
+
+
+            <p>
+
+                Your website goes live and becomes part
+                of your business's digital presence.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     PORTFOLIO
+========================== -->
+
+<section
+    class="section portfolio"
+    id="portfolio">
+
+```
+<div class="container">
+
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            OUR WORK
+        </span>
+
+
+        <h2>
+
+            Projects We're
+            <span>Building</span>
+
+        </h2>
+
+
+        <p>
+
+            A growing collection of websites
+            and technology projects.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="portfolio-grid">
+
+
+        <!-- BAILTECH AI -->
+
+        <article class="portfolio-card featured-project">
+
+
+            <div class="project-preview bailtech-preview">
+
+                <div class="project-browser">
+
+
+                    <div class="browser-bar">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <div class="project-screen">
+
+
+                        <div class="screen-logo">
+
+                            BAILTECH
+                            <b>AI</b>
+
+                        </div>
+
+
+                        <div class="screen-title">
+
+                            Websites & AI Solutions
+
+                        </div>
+
+
+                        <div class="screen-boxes">
+
+                            <div></div>
+                            <div></div>
+                            <div></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+                <span>
+                    01 • COMPANY PROJECT
+                </span>
+
+
+                <h3>
+                    BailTech AI
+                </h3>
+
+
+                <p>
+
+                    Our own technology and web-development
+                    platform, designed to demonstrate modern
+                    web and AI capabilities.
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>
+                        Web Development
+                    </span>
+
+                    <span>
+                        AI
+                    </span>
+
+                    <span>
+                        Python
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- THE FACE DOCTRESS -->
+
+        <article class="portfolio-card">
+
+
+            <a
+                href="https://ernestbail.github.io/the-face-doctress/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+                aria-label="Visit The Face Doctress website">
+
+
+                <div class="project-preview beauty-preview">
+
+                    <div class="beauty-content">
+
+                        <small>
+                            THE FACE
+                        </small>
+
+
+                        <strong>
+                            DOCTRESS
+                        </strong>
+
+
+                        <div class="beauty-line"></div>
+
+
+                        <span>
+                            BEAUTY • MAKEUP • SERVICES
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <div class="project-info">
+
+                <span>
+                    02 • BUSINESS WEBSITE
+                </span>
+
+
+                <h3>
+                    THE FACE DOCTRESS
+                </h3>
+
+
+                <p>
+
+                    A professional beauty business website
+                    featuring services, booking information,
+                    gallery, policies, and customer-focused design.
+
+                </p>
+
+
+                <div class="project-tags">
+
+                    <span>
+                        Web Design
+                    </span>
+
+                    <span>
+                        Booking
+                    </span>
+
+                    <span>
+                        Business
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="https://ernestbail.github.io/the-face-doctress/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-visit">
+
+                    Visit Website →
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- COMING PROJECT -->
+
+        <article class="portfolio-card coming-project">
+
+
+            <div class="coming-content">
+
+                <div class="coming-icon">
+                    +
+                </div>
+
+
+                <h3>
+                    Your Business Could Be Here
+                </h3>
+
+
+                <p>
+
+                    We're building our portfolio one
+                    business at a time.
+
+                </p>
+
+
+                <a href="#contact">
+                    Start a Project →
+                </a>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section
+    class="section about"
+    id="about">
+
+```
+<div class="container about-grid">
+
+
+    <div class="about-image">
+
+
+        <div class="about-photo-card">
+
+
+            <img
+                src="ernest-baidoo.jpg"
+                alt="Ernest Baidoo, Founder and Developer of BailTech AI"
+            >
+
+
+            <div class="about-photo-info">
+
+                <strong>
+                    Ernest Baidoo
+                </strong>
+
+
+                <span>
+                    Founder & Developer
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="about-content">
+
+
+        <span class="eyebrow">
+            ABOUT BAILTECH AI
+        </span>
+
+
+        <h2>
+
+            Technology Built
+            <span>With Purpose.</span>
+
+        </h2>
+
+
+        <p>
+
+            BailTech AI was created to help businesses build
+            a stronger presence online through modern web
+            development and emerging AI technology.
+
+        </p>
+
+
+        <p>
+
+            Behind BailTech AI is
+            <strong>Ernest Baidoo</strong>,
+            an AI-focused developer with a passion for combining
+            technology, business, and practical solutions.
+
+        </p>
+
+
+        <p>
+
+            The goal is simple: create technology that is useful,
+            professional, accessible, and built around the needs
+            of each business.
+
+        </p>
+
+
+        <div class="about-highlights">
+
+
+            <div>
+
+                <strong>
+                    01
+                </strong>
+
+                <span>
+                    Business First
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    02
+                </strong>
+
+                <span>
+                    Modern Technology
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    03
+                </strong>
+
+                <span>
+                    AI Focused
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     REVIEWS
+========================== -->
+
+<section
+    class="section reviews"
+    id="reviews">
+
+```
+<div class="container">
+
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            CUSTOMER FEEDBACK
+        </span>
+
+
+        <h2>
+
+            What Our
+            <span>Customers Say.</span>
+
+        </h2>
+
+
+        <p>
+
+            Have you worked with BailTech AI?
+            Share your experience with us.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="reviews-layout">
+
+
+        <!-- REVIEW FORM -->
+
+        <div class="review-form-card">
+
+
+            <h3>
+                Leave a Review
+            </h3>
+
+
+            <p class="review-intro">
+
+                Tell us about your experience
+                with BailTech AI.
+
+            </p>
+
+
+
+            <form
+                id="reviewForm"
+                action="https://formspree.io/f/mrpzejzg"
+                method="POST">
+
+
+                <div class="form-group">
+
+                    <label for="reviewName">
+                        Your Name
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="reviewName"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="reviewBusiness">
+                        Business Name
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="reviewBusiness"
+                        name="business"
+                        placeholder="Your business name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="reviewRating">
+                        Rating
+                    </label>
+
+
+                    <select
+                        id="reviewRating"
+                        name="rating"
+                        required>
+
+
+                        <option value="">
+                            Select a rating
+                        </option>
+
+
+                        <option value="5">
+                            ★★★★★ — Excellent
+                        </option>
+
+
+                        <option value="4">
+                            ★★★★☆ — Great
+                        </option>
+
+
+                        <option value="3">
+                            ★★★☆☆ — Good
+                        </option>
+
+
+                        <option value="2">
+                            ★★☆☆☆ — Fair
+                        </option>
+
+
+                        <option value="1">
+                            ★☆☆☆☆ — Poor
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="reviewMessage">
+                        Your Review
+                    </label>
+
+
+                    <textarea
+                        id="reviewMessage"
+                        name="review"
+                        rows="6"
+                        placeholder="Tell us about your experience..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="New BailTech AI Customer Review"
+                >
+
+
+                <input
+                    type="hidden"
+                    name="_format"
+                    value="plain"
+                >
+
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary form-submit"
+                    id="reviewSubmit">
+
+                    Submit Review →
+
+                </button>
+
+
+
+                <p
+                    class="review-success"
+                    id="reviewSuccess"
+                    role="status"
+                    aria-live="polite">
+                </p>
+
+
+
+                <p class="form-note">
+
+                    Reviews are reviewed before
+                    being published.
+
+                </p>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- PUBLIC REVIEWS -->
+
+        <div class="public-reviews">
+
+
+            <div class="review-placeholder">
+
+
+                <div class="review-placeholder-icon">
+                    ★
+                </div>
+
+
+                <h3>
+                    Be Our First Reviewer
+                </h3>
+
+
+                <p>
+
+                    Your feedback can help other businesses
+                    understand what BailTech AI can do for them.
+
+                </p>
+
+
+                <a
+                    href="#reviewForm"
+                    class="btn btn-secondary">
+
+                    Leave a Review
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     CTA
+========================== -->
+
+<section class="cta">
+
+```
+<div class="container cta-content">
+
+
+    <div>
+
+        <span class="eyebrow">
+            READY TO BUILD?
+        </span>
+
+
+        <h2>
+
+            Let's Build Something
+            <span>Great Together.</span>
+
+        </h2>
+
+
+        <p>
+
+            Have a business that needs a professional website?
+            Let's talk about your idea.
+
+        </p>
+
+    </div>
+
+
+    <a
+        href="#contact"
+        class="btn btn-white">
+
+        Start Your Project →
+
+    </a>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section
+    class="section contact"
+    id="contact">
+
+```
+<div class="container contact-grid">
+
+
+    <!-- CONTACT INFORMATION -->
+
+    <div class="contact-info">
+
+
+        <span class="eyebrow">
+            GET IN TOUCH
+        </span>
+
+
+        <h2>
+
+            Let's Talk About
+            <span>Your Business.</span>
+
+        </h2>
+
+
+        <p>
+
+            Tell us what you're looking to build. Whether you need
+            a new website, a redesign, or an AI-powered solution,
+            we'd love to hear about your project.
+
+        </p>
+
+
+
+        <div class="contact-details">
+
+
+            <div class="contact-detail">
+
+
+                <div class="contact-icon">
+                    @
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Email
+                    </span>
+
+
+                    <strong>
+                        Bailernest62@gmail.com
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="contact-detail">
+
+
+                <div class="contact-icon">
+                    ⌂
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Service
+                    </span>
+
+
+                    <strong>
+                        Web & AI Solutions
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CONTACT FORM -->
+
+    <form
+        class="contact-form"
+        id="contactForm"
+        action="https://formspree.io/f/mrpzejzg"
+        method="POST">
+
+
+        <div class="form-row">
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Your Name
+                </label>
+
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="business">
+                Business Name
+            </label>
+
+
+            <input
+                type="text"
+                id="business"
+                name="business"
+                placeholder="Your business name"
+            >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="service">
+                What Do You Need?
+            </label>
+
+
+            <select
+                id="service"
+                name="service">
+
+
+                <option value="">
+                    Select a service
+                </option>
+
+
+                <option value="new-website">
+                    New Business Website
+                </option>
+
+
+                <option value="redesign">
+                    Website Redesign
+                </option>
+
+
+                <option value="ai">
+                    AI Solution
+                </option>
+
+
+                <option value="booking">
+                    Booking / Payment Integration
+                </option>
+
+
+                <option value="other">
+                    Something Else
+                </option>
+
+
+            </select>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="message">
+                Tell Us About Your Project
+            </label>
+
+
+            <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Tell us what you would like to build..."
+                required
+            ></textarea>
+
+        </div>
+
+
+
+        <input
+            type="hidden"
+            name="_subject"
+            value="New BailTech AI Project Request"
+        >
+
+
+
+        <button
+            type="submit"
+            class="btn btn-primary form-submit"
+            id="contactSubmit">
+
+            Send Project Request →
+
+        </button>
+
+
+
+        <p
+            class="form-success"
+            id="formSuccess"
+            role="status"
+            aria-live="polite">
+        </p>
+
+
+
+        <p class="form-note">
+
+            We will review your request
+            and get back to you.
+
+        </p>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+</main>
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer class="footer">
+
+```
+<div class="container footer-grid">
+
+
+    <div>
+
+
+        <a
+            href="#home"
+            class="logo footer-logo">
+
+            <span>BAILTECH</span> AI
+
+        </a>
+
+
+        <p>
+
+            Websites & AI solutions
+            for modern businesses.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="footer-links">
+
+
+        <h4>
+            Explore
+        </h4>
+
+
+        <a href="#home">
+            Home
+        </a>
+
+
+        <a href="#services">
+            Services
+        </a>
+
+
+        <a href="#portfolio">
+            Portfolio
+        </a>
+
+
+        <a href="#about">
+            About
+        </a>
+
+
+        <a href="#reviews">
+            Reviews
+        </a>
+
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </div>
+
+
+
+    <div class="footer-links">
+
+
+        <h4>
+            Services
+        </h4>
+
+
+        <a href="#services">
+            Business Websites
+        </a>
+
+
+        <a href="#services">
+            AI Solutions
+        </a>
+
+
+        <a href="#services">
+            Website Redesign
+        </a>
+
+
+        <a href="#services">
+            Business Features
+        </a>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="container footer-bottom">
+
+
+    <p>
+
+        © 2026 BailTech AI.
+        All rights reserved.
+
+    </p>
+
+
+    <p>
+
+        Founded & Developed by
+        Ernest Baidoo
+
+    </p>
+
+
+</div>
+```
+
+</footer>
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
