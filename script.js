@@ -1,216 +1,234 @@
-document.addEventListener("DOMContentLoaded", function () {
+```javascript
+/* =========================================
+   BAILTECH AI JAVASCRIPT
+========================================= */
 
-    /* =========================================
-       MOBILE NAVIGATION
-    ========================================= */
 
-    const menuToggle = document.getElementById("menuToggle");
-    const navMenu = document.getElementById("navMenu");
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
 
-    if (menuToggle && navMenu) {
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
 
-        menuToggle.addEventListener("click", function () {
+if (menuToggle && navMenu) {
 
-            navMenu.classList.toggle("active");
+    menuToggle.addEventListener("click", function () {
 
-            const isOpen = navMenu.classList.contains("active");
+        navMenu.classList.toggle("active");
+
+        const isOpen = navMenu.classList.contains("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation" : "Open navigation"
+        );
+
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+
+    });
+
+
+    /* Close menu when a navigation link is clicked */
+
+    const navLinks = navMenu.querySelectorAll("a");
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navMenu.classList.remove("active");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen ? "true" : "false"
+                "false"
             );
 
             menuToggle.setAttribute(
                 "aria-label",
-                isOpen ? "Close navigation" : "Open navigation"
+                "Open navigation"
             );
 
-            menuToggle.textContent = isOpen ? "✕" : "☰";
+            menuToggle.textContent = "☰";
 
         });
 
-
-        const navLinks = navMenu.querySelectorAll("a");
-
-        navLinks.forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                navMenu.classList.remove("active");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
-
-                menuToggle.textContent = "☰";
-
-            });
-
-        });
+    });
 
 
-        window.addEventListener("resize", function () {
+    /* Close menu when clicking outside */
 
-            if (window.innerWidth > 750) {
+    document.addEventListener("click", function (event) {
 
-                navMenu.classList.remove("active");
+        const clickedInsideMenu =
+            navMenu.contains(event.target);
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+        const clickedToggle =
+            menuToggle.contains(event.target);
 
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
+        if (
+            !clickedInsideMenu &&
+            !clickedToggle &&
+            navMenu.classList.contains("active")
+        ) {
 
-                menuToggle.textContent = "☰";
+            navMenu.classList.remove("active");
 
-            }
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
-        });
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
 
-    }
+            menuToggle.textContent = "☰";
 
+        }
 
+    });
 
-    /* =========================================
-       CONTACT FORM - FORMSPREE
-    ========================================= */
-
-    const contactForm = document.getElementById("contactForm");
-
-    if (contactForm) {
-
-        contactForm.addEventListener("submit", async function (event) {
-
-            event.preventDefault();
+}
 
 
-            const submitButton =
-                contactForm.querySelector(".form-submit");
+/* =========================================
+   REVIEW FORM
+========================================= */
+
+const reviewForm = document.getElementById("reviewForm");
+
+if (reviewForm) {
+
+    reviewForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        const submitButton =
+            reviewForm.querySelector("button[type='submit']");
+
+        const originalText =
+            submitButton.textContent;
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
 
 
-            const originalButtonText =
-                submitButton.innerHTML;
+        const formData =
+            new FormData(reviewForm);
 
 
-            submitButton.disabled = true;
+        try {
 
-            submitButton.innerHTML = "Sending Request...";
-
-
-            const formData = new FormData(contactForm);
-
-
-            try {
-
-                const response = await fetch(
-                    "https://formspree.io/f/mrpzejzg",
-                    {
-                        method: "POST",
-                        body: formData,
-                        headers: {
-                            "Accept": "application/json"
-                        }
+            const response = await fetch(
+                reviewForm.action,
+                {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
                     }
-                );
-
-
-                if (response.ok) {
-
-                    contactForm.innerHTML = `
-                        <div class="form-success">
-
-                            <div class="success-icon">
-                                ✓
-                            </div>
-
-                            <h3>
-                                Request Received!
-                            </h3>
-
-                            <p>
-                                Thank you for contacting BailTech AI.
-                                Your project request has been received,
-                                and we will get back to you as soon as possible.
-                            </p>
-
-                            <button
-                                type="button"
-                                class="btn btn-primary"
-                                id="sendAnother"
-                            >
-                                Send Another Request
-                            </button>
-
-                        </div>
-                    `;
-
-
-                    const sendAnother =
-                        document.getElementById("sendAnother");
-
-
-                    if (sendAnother) {
-
-                        sendAnother.addEventListener(
-                            "click",
-                            function () {
-
-                                location.reload();
-
-                            }
-                        );
-
-                    }
-
-                } else {
-
-                    const data = await response.json();
-
-                    console.error(
-                        "Formspree error:",
-                        data
-                    );
-
-
-                    throw new Error(
-                        "Form submission failed."
-                    );
-
                 }
+            );
 
 
-            } catch (error) {
+            if (response.ok) {
 
-                console.error(
-                    "Submission error:",
-                    error
-                );
+                reviewForm.reset();
 
-
-                submitButton.disabled = false;
-
-                submitButton.innerHTML =
-                    originalButtonText;
-
+                submitButton.textContent =
+                    "Review Submitted ✓";
 
                 alert(
-                    "Sorry, we could not send your request. Please try again."
+                    "Thank you! Your review has been submitted for approval."
+                );
+
+                setTimeout(function () {
+
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+
+                }, 3000);
+
+            } else {
+
+                throw new Error(
+                    "Form submission failed."
                 );
 
             }
 
-        });
+        } catch (error) {
 
-    }
+            console.error(error);
 
-});
+            alert(
+                "There was a problem submitting your review. Please try again."
+            );
+
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   GOOGLE REVIEW BUTTON
+========================================= */
+
+/*
+    IMPORTANT:
+
+    After your Google Business Profile is verified,
+    replace the # below with your actual Google
+    review link.
+
+    Example:
+
+    const googleReviewUrl =
+        "https://g.page/r/YOUR-REVIEW-LINK/review";
+*/
+
+const googleReviewButton =
+    document.getElementById("googleReviewButton");
+
+
+if (googleReviewButton) {
+
+    googleReviewButton.addEventListener(
+        "click",
+        function (event) {
+
+            const googleReviewUrl = "#";
+
+
+            if (googleReviewUrl === "#") {
+
+                event.preventDefault();
+
+                alert(
+                    "Your Google Business Profile is still being set up. Once Google verifies BailTech AI, we will add your Google Review link here."
+                );
+
+                return;
+
+            }
+
+            googleReviewButton.href =
+                googleReviewUrl;
+
+        }
+    );
+
+}
+```
