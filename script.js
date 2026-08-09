@@ -1,28 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 ```
-/* ================================
+/* =========================================
    MOBILE HAMBURGER MENU
-================================= */
+========================================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 
 if (menuToggle && navMenu) {
 
-    menuToggle.addEventListener("click", function (event) {
-
-        event.preventDefault();
-        event.stopPropagation();
+    menuToggle.addEventListener("click", function () {
 
         navMenu.classList.toggle("active");
 
         const isOpen = navMenu.classList.contains("active");
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
+        menuToggle.setAttribute("aria-expanded", isOpen);
 
         menuToggle.setAttribute(
             "aria-label",
@@ -60,53 +54,22 @@ if (menuToggle && navMenu) {
 
     });
 
-
-    /* Close menu if user clicks outside */
-
-    document.addEventListener("click", function (event) {
-
-        if (
-            navMenu.classList.contains("active") &&
-            !navMenu.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
-
-            navMenu.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation"
-            );
-
-            menuToggle.textContent = "☰";
-
-        }
-
-    });
-
 }
 
 
-/* ================================
-   CONTACT FORM
-================================= */
+/* =========================================
+   CONTACT FORM — FORMSPREE
+========================================= */
 
 const contactForm = document.getElementById("contactForm");
-const formSuccess = document.getElementById("formSuccess");
 const contactSubmit = document.getElementById("contactSubmit");
+const formSuccess = document.getElementById("formSuccess");
 
 if (contactForm) {
 
     contactForm.addEventListener("submit", async function (event) {
 
         event.preventDefault();
-
-        const formData = new FormData(contactForm);
 
         if (contactSubmit) {
             contactSubmit.disabled = true;
@@ -123,7 +86,7 @@ if (contactForm) {
                 contactForm.action,
                 {
                     method: "POST",
-                    body: formData,
+                    body: new FormData(contactForm),
                     headers: {
                         "Accept": "application/json"
                     }
@@ -132,13 +95,15 @@ if (contactForm) {
 
             if (response.ok) {
 
+                if (formSuccess) {
+                    formSuccess.textContent =
+                        "Thank you! Your project request has been sent successfully. We will get back to you soon.";
+                }
+
                 contactForm.reset();
 
-                if (formSuccess) {
-
-                    formSuccess.textContent =
-                        "Thank you! Your project request has been sent successfully.";
-
+                if (contactSubmit) {
+                    contactSubmit.textContent = "Request Sent ✓";
                 }
 
             } else {
@@ -150,20 +115,14 @@ if (contactForm) {
         } catch (error) {
 
             if (formSuccess) {
-
                 formSuccess.textContent =
-                    "Something went wrong. Please try again or contact us directly.";
-
+                    "Something went wrong. Please try again or email Bailernest62@gmail.com.";
             }
 
-        } finally {
-
             if (contactSubmit) {
-
                 contactSubmit.disabled = false;
                 contactSubmit.textContent =
                     "Send Project Request →";
-
             }
 
         }
@@ -173,13 +132,13 @@ if (contactForm) {
 }
 
 
-/* ================================
-   REVIEW FORM
-================================= */
+/* =========================================
+   REVIEW FORM — FORMSPREE
+========================================= */
 
 const reviewForm = document.getElementById("reviewForm");
-const reviewSuccess = document.getElementById("reviewSuccess");
 const reviewSubmit = document.getElementById("reviewSubmit");
+const reviewSuccess = document.getElementById("reviewSuccess");
 
 if (reviewForm) {
 
@@ -187,19 +146,13 @@ if (reviewForm) {
 
         event.preventDefault();
 
-        const formData = new FormData(reviewForm);
-
         if (reviewSubmit) {
-
             reviewSubmit.disabled = true;
             reviewSubmit.textContent = "Submitting...";
-
         }
 
         if (reviewSuccess) {
-
             reviewSuccess.textContent = "";
-
         }
 
         try {
@@ -208,7 +161,7 @@ if (reviewForm) {
                 reviewForm.action,
                 {
                     method: "POST",
-                    body: formData,
+                    body: new FormData(reviewForm),
                     headers: {
                         "Accept": "application/json"
                     }
@@ -217,13 +170,15 @@ if (reviewForm) {
 
             if (response.ok) {
 
+                if (reviewSuccess) {
+                    reviewSuccess.textContent =
+                        "Thank you! Your review has been submitted successfully.";
+                }
+
                 reviewForm.reset();
 
-                if (reviewSuccess) {
-
-                    reviewSuccess.textContent =
-                        "Thank you! Your review has been submitted for approval.";
-
+                if (reviewSubmit) {
+                    reviewSubmit.textContent = "Review Submitted ✓";
                 }
 
             } else {
@@ -235,20 +190,14 @@ if (reviewForm) {
         } catch (error) {
 
             if (reviewSuccess) {
-
                 reviewSuccess.textContent =
-                    "We could not submit your review. Please try again.";
-
+                    "Something went wrong. Please try again.";
             }
 
-        } finally {
-
             if (reviewSubmit) {
-
                 reviewSubmit.disabled = false;
                 reviewSubmit.textContent =
                     "Submit Review →";
-
             }
 
         }
@@ -258,25 +207,27 @@ if (reviewForm) {
 }
 
 
-/* ================================
-   SMOOTH SCROLLING
-================================= */
+/* =========================================
+   SMOOTH SCROLL
+========================================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+const allLinks = document.querySelectorAll('a[href^="#"]');
+
+allLinks.forEach(function (link) {
 
     link.addEventListener("click", function (event) {
 
         const targetId = this.getAttribute("href");
 
-        if (!targetId || targetId === "#") {
-            return;
-        }
-
-        const target = document.querySelector(targetId);
-
-        if (target) {
+        if (
+            targetId &&
+            targetId !== "#" &&
+            document.querySelector(targetId)
+        ) {
 
             event.preventDefault();
+
+            const target = document.querySelector(targetId);
 
             target.scrollIntoView({
                 behavior: "smooth",
