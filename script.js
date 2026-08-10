@@ -1,59 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================================
+    /* =====================================================
        MOBILE HAMBURGER MENU
-    ========================================= */
+    ===================================================== */
 
     const menuToggle = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
 
     if (menuToggle && navMenu) {
 
-        function openMenu() {
-            navMenu.classList.add("active");
-
-            menuToggle.setAttribute("aria-expanded", "true");
-            menuToggle.setAttribute("aria-label", "Close navigation");
-
-            menuToggle.textContent = "✕";
-
-            document.body.classList.add("menu-open");
-        }
-
-
-        function closeMenu() {
-            navMenu.classList.remove("active");
-
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation");
-
-            menuToggle.textContent = "☰";
-
-            document.body.classList.remove("menu-open");
-        }
-
-
-        function toggleMenu() {
-
-            const isOpen = navMenu.classList.contains("active");
-
-            if (isOpen) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-
-        }
-
-
-        /* Hamburger button */
-
         menuToggle.addEventListener("click", function (event) {
 
-            event.preventDefault();
             event.stopPropagation();
 
-            toggleMenu();
+            const isOpen = menuToggle.classList.toggle("active");
+
+            navMenu.classList.toggle("active", isOpen);
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+            );
 
         });
 
@@ -66,7 +38,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             link.addEventListener("click", function () {
 
-                closeMenu();
+                menuToggle.classList.remove("active");
+
+                navMenu.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
 
             });
 
@@ -80,42 +64,83 @@ document.addEventListener("DOMContentLoaded", function () {
             const clickedInsideMenu =
                 navMenu.contains(event.target);
 
-            const clickedButton =
+            const clickedToggle =
                 menuToggle.contains(event.target);
 
             if (
-                navMenu.classList.contains("active") &&
                 !clickedInsideMenu &&
-                !clickedButton
+                !clickedToggle &&
+                navMenu.classList.contains("active")
             ) {
 
-                closeMenu();
+                menuToggle.classList.remove("active");
+
+                navMenu.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
 
             }
 
         });
 
 
-        /* Close menu with Escape key */
+        /* Close menu when pressing Escape */
 
         document.addEventListener("keydown", function (event) {
 
-            if (event.key === "Escape") {
+            if (
+                event.key === "Escape" &&
+                navMenu.classList.contains("active")
+            ) {
 
-                closeMenu();
+                menuToggle.classList.remove("active");
+
+                navMenu.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
+
+                menuToggle.focus();
 
             }
 
         });
 
 
-        /* Close mobile menu if screen becomes desktop */
+        /* Close mobile menu if window becomes desktop size */
 
         window.addEventListener("resize", function () {
 
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 750) {
 
-                closeMenu();
+                menuToggle.classList.remove("active");
+
+                navMenu.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
 
             }
 
@@ -124,9 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =========================================
+    /* =====================================================
        CONTACT FORM — FORMSPREE
-    ========================================= */
+    ===================================================== */
 
     const contactForm =
         document.getElementById("contactForm");
@@ -161,6 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     formSuccess.textContent = "";
 
+                    formSuccess.classList.remove("show");
+
                 }
 
 
@@ -171,7 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         {
                             method: "POST",
 
-                            body: new FormData(contactForm),
+                            body:
+                                new FormData(contactForm),
 
                             headers: {
                                 "Accept":
@@ -188,6 +216,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             formSuccess.textContent =
                                 "Thank you! Your project request has been sent successfully. We will get back to you soon.";
 
+                            formSuccess.classList.add(
+                                "show"
+                            );
+
                         }
 
 
@@ -200,27 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 "Request Sent ✓";
 
                         }
-
-
-                        /*
-                         * Allow another submission
-                         * after a short delay.
-                         */
-
-                        setTimeout(function () {
-
-                            if (contactSubmit) {
-
-                                contactSubmit.disabled =
-                                    false;
-
-                                contactSubmit.textContent =
-                                    "Send Project Request →";
-
-                            }
-
-                        }, 4000);
-
 
                     } else {
 
@@ -243,13 +254,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         formSuccess.textContent =
                             "Something went wrong. Please try again or email Bailernest62@gmail.com.";
 
+                        formSuccess.classList.add(
+                            "show"
+                        );
+
                     }
 
 
                     if (contactSubmit) {
 
-                        contactSubmit.disabled =
-                            false;
+                        contactSubmit.disabled = false;
 
                         contactSubmit.textContent =
                             "Send Project Request →";
@@ -264,9 +278,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =========================================
+    /* =====================================================
        REVIEW FORM — FORMSPREE
-    ========================================= */
+    ===================================================== */
 
     const reviewForm =
         document.getElementById("reviewForm");
@@ -301,6 +315,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     reviewSuccess.textContent = "";
 
+                    reviewSuccess.classList.remove(
+                        "show"
+                    );
+
                 }
 
 
@@ -311,7 +329,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         {
                             method: "POST",
 
-                            body: new FormData(reviewForm),
+                            body:
+                                new FormData(reviewForm),
 
                             headers: {
                                 "Accept":
@@ -328,6 +347,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             reviewSuccess.textContent =
                                 "Thank you! Your review has been submitted successfully.";
 
+                            reviewSuccess.classList.add(
+                                "show"
+                            );
+
                         }
 
 
@@ -340,26 +363,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                 "Review Submitted ✓";
 
                         }
-
-
-                        /*
-                         * Allow another review later.
-                         */
-
-                        setTimeout(function () {
-
-                            if (reviewSubmit) {
-
-                                reviewSubmit.disabled =
-                                    false;
-
-                                reviewSubmit.textContent =
-                                    "Submit Review →";
-
-                            }
-
-                        }, 4000);
-
 
                     } else {
 
@@ -382,13 +385,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         reviewSuccess.textContent =
                             "Something went wrong. Please try again.";
 
+                        reviewSuccess.classList.add(
+                            "show"
+                        );
+
                     }
 
 
                     if (reviewSubmit) {
 
-                        reviewSubmit.disabled =
-                            false;
+                        reviewSubmit.disabled = false;
 
                         reviewSubmit.textContent =
                             "Submit Review →";
@@ -403,9 +409,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =========================================
+    /* =====================================================
        SMOOTH SCROLL
-    ========================================= */
+    ===================================================== */
 
     const allLinks =
         document.querySelectorAll(
@@ -425,12 +431,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (
                     targetId &&
-                    targetId !== "#" &&
-                    document.querySelector(targetId)
+                    targetId !== "#"
                 ) {
-
-                    event.preventDefault();
-
 
                     const target =
                         document.querySelector(
@@ -438,13 +440,17 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
 
 
-                    target.scrollIntoView({
+                    if (target) {
 
-                        behavior: "smooth",
+                        event.preventDefault();
 
-                        block: "start"
 
-                    });
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
 
                 }
 
@@ -454,29 +460,87 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* =========================================
-       PREVENT BODY SCROLL WHEN MOBILE MENU
-       IS OPEN
-    ========================================= */
+    /* =====================================================
+       PREVENT FORM BUTTON DOUBLE CLICKS
+    ===================================================== */
 
-    const style =
-        document.createElement("style");
+    const forms =
+        document.querySelectorAll("form");
 
 
-    style.textContent = `
+    forms.forEach(function (form) {
 
-        @media (max-width: 768px) {
+        form.addEventListener(
+            "invalid",
+            function () {
 
-            body.menu-open {
-                overflow: hidden;
+                const firstInvalid =
+                    form.querySelector(
+                        ":invalid"
+                    );
+
+
+                if (firstInvalid) {
+
+                    firstInvalid.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }
+
+            },
+            true
+        );
+
+    });
+
+
+    /* =====================================================
+       IMAGE ERROR HANDLING
+    ===================================================== */
+
+    const images =
+        document.querySelectorAll("img");
+
+
+    images.forEach(function (image) {
+
+        image.addEventListener(
+            "error",
+            function () {
+
+                console.warn(
+                    "Image could not be loaded:",
+                    image.src
+                );
+
             }
+        );
 
-        }
-
-    `;
+    });
 
 
-    document.head.appendChild(style);
+    /* =====================================================
+       INITIALIZE MENU ACCESSIBILITY
+    ===================================================== */
 
+    if (menuToggle && navMenu) {
+
+        menuToggle.classList.remove("active");
+
+        navMenu.classList.remove("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation"
+        );
+
+    }
 
 });
