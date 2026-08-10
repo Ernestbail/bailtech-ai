@@ -4,7 +4,6 @@
    RESPONSIVE VERSION
 ========================================================= */
 
-
 /* =========================================================
    RESET
 ========================================================= */
@@ -50,7 +49,6 @@ img {
     display: block;
 }
 
-
 /* =========================================================
    VARIABLES
 ========================================================= */
@@ -72,7 +70,6 @@ img {
         0 15px 45px rgba(22, 47, 84, 0.09);
 }
 
-
 /* =========================================================
    CONTAINER
 ========================================================= */
@@ -81,7 +78,6 @@ img {
     width: min(1180px, 92%);
     margin: 0 auto;
 }
-
 
 /* =========================================================
    NAVBAR
@@ -123,8 +119,7 @@ img {
     color: var(--blue);
 }
 
-
-/* Desktop navigation */
+/* Desktop Navigation */
 
 nav {
     display: flex;
@@ -146,7 +141,6 @@ nav a {
 nav a:hover {
     color: var(--blue);
 }
-
 
 /* =========================================================
    HAMBURGER BUTTON
@@ -194,7 +188,6 @@ nav a:hover {
 .menu-toggle:focus-visible {
     outline: 3px solid rgba(23, 105, 224, 0.15);
 }
-
 
 /* =========================================================
    HERO
@@ -276,7 +269,6 @@ nav a:hover {
     gap: 14px;
 }
 
-
 /* =========================================================
    BUTTONS
 ========================================================= */
@@ -340,7 +332,6 @@ nav a:hover {
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.15);
 }
-
 
 /* =========================================================
    HERO CARD
@@ -461,7 +452,6 @@ nav a:hover {
     font-size: 0.75rem;
 }
 
-
 /* =========================================================
    TRUST STRIP
 ========================================================= */
@@ -507,7 +497,6 @@ nav a:hover {
 
     font-size: 0.76rem;
 }
-
 
 /* =========================================================
    SECTIONS
@@ -558,7 +547,6 @@ nav a:hover {
 
     color: var(--gray);
 }
-
 
 /* =========================================================
    SERVICES
@@ -681,7 +669,6 @@ nav a:hover {
     font-weight: 800;
 }
 
-
 /* =========================================================
    PROCESS
 ========================================================= */
@@ -734,7 +721,6 @@ nav a:hover {
 
     font-size: 0.88rem;
 }
-
 
 /* =========================================================
    PORTFOLIO
@@ -941,6 +927,9 @@ nav a:hover {
     font-weight: 600;
 }
 
+.project-link {
+    display: block;
+}
 
 /* =========================================================
    FACE DOCTRESS PROJECT
@@ -1000,6 +989,20 @@ nav a:hover {
     letter-spacing: 0.16em;
 }
 
+.project-visit {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    color: var(--blue);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.project-visit:hover {
+    color: var(--blue-dark);
+}
 
 /* =========================================================
    COMING PROJECT
@@ -1064,7 +1067,6 @@ nav a:hover {
     font-size: 0.82rem;
     font-weight: 700;
 }
-
 
 /* =========================================================
    ABOUT
@@ -1212,7 +1214,6 @@ nav a:hover {
     font-weight: 600;
 }
 
-
 /* =========================================================
    CTA
 ========================================================= */
@@ -1264,7 +1265,6 @@ nav a:hover {
 
     color: #dbeaff;
 }
-
 
 /* =========================================================
    CONTACT
@@ -1343,9 +1343,8 @@ nav a:hover {
     word-break: break-word;
 }
 
-
 /* =========================================================
-   FORM
+   CONTACT FORM
 ========================================================= */
 
 .contact-form {
@@ -1434,6 +1433,27 @@ nav a:hover {
     font-size: 0.68rem;
 }
 
+.form-success {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background: #eef8f0;
+
+    border-radius: 8px;
+
+    color: #24713b;
+
+    text-align: center;
+
+    font-size: 0.8rem;
+}
+
+.form-success.show {
+    display: block;
+}
 
 /* =========================================================
    REVIEWS
@@ -1452,47 +1472,145 @@ nav a:hover {
     text-align: center;
 }
 
-.reviews-grid {
+.reviews-layout {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1.15fr 0.85fr;
+
+    gap: 30px;
+
+    align-items: start;
+}
+
+/* =========================================================
+   PUBLIC REVIEWS
+========================================================= */
+
+.public-reviews {
+    display: flex;
+
+    flex-direction: column;
 
     gap: 20px;
 }
 
+.public-reviews-header {
+    margin-bottom: 5px;
+}
+
+.public-reviews-header h3 {
+    margin-top: 5px;
+
+    font-size: 1.6rem;
+
+    color: var(--dark);
+}
+
+.public-reviews-header p {
+    margin-top: 7px;
+
+    color: var(--gray);
+
+    font-size: 0.88rem;
+}
+
+/* =========================================================
+   REVIEW CARD
+========================================================= */
+
 .review-card {
-    padding: 28px;
+    position: relative;
+
+    padding: 32px;
 
     background: white;
 
     border: 1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius: 14px;
 
     box-shadow:
-        0 8px 25px rgba(22, 47, 84, 0.04);
+        0 8px 30px rgba(22, 47, 84, 0.05);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
+
+.review-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #c8d9ef;
+
+    box-shadow:
+        0 15px 40px rgba(22, 47, 84, 0.09);
+}
+
+/* =========================================================
+   REVIEW STARS
+========================================================= */
 
 .review-stars {
     color: #f4b400;
 
-    font-size: 1rem;
+    font-size: 1.05rem;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+
+    line-height: 1;
 }
 
+/* =========================================================
+   REVIEW TEXT
+========================================================= */
+
 .review-text {
-    margin: 18px 0;
+    margin: 18px 0 0;
 
     color: #4f5c6c;
 
-    font-size: 0.9rem;
+    font-size: 0.92rem;
+
+    line-height: 1.75;
 }
 
+/* =========================================================
+   REVIEW AUTHOR
+========================================================= */
+
 .review-author {
-    padding-top: 15px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+    padding-top: 20px;
 
     border-top: 1px solid var(--border);
+}
+
+.review-author-icon {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--blue-light);
+
+    color: var(--blue);
+
+    font-size: 0.75rem;
+    font-weight: 800;
 }
 
 .review-author strong {
@@ -1500,7 +1618,7 @@ nav a:hover {
 
     color: var(--dark);
 
-    font-size: 0.85rem;
+    font-size: 0.82rem;
 }
 
 .review-author span {
@@ -1513,12 +1631,35 @@ nav a:hover {
     font-size: 0.7rem;
 }
 
-.review-form-wrapper {
-    max-width: 720px;
+/* =========================================================
+   VERIFIED REVIEW
+========================================================= */
 
-    margin: 55px auto 0;
+.review-verified {
+    display: inline-flex;
 
-    padding: 35px;
+    align-items: center;
+
+    margin-top: 18px;
+
+    padding: 6px 10px;
+
+    border-radius: 5px;
+
+    background: #eef8f0;
+
+    color: #24713b;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+/* =========================================================
+   REVIEW FORM CARD
+========================================================= */
+
+.review-form-card {
+    padding: 32px;
 
     background: white;
 
@@ -1526,83 +1667,111 @@ nav a:hover {
 
     border-radius: 14px;
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        0 8px 30px rgba(22, 47, 84, 0.05);
 }
 
-.review-form-wrapper h3 {
-    margin-bottom: 8px;
-
-    font-size: 1.4rem;
-}
-
-.review-form-wrapper > p {
+.review-form-header {
     margin-bottom: 25px;
+}
+
+.review-form-header h3 {
+    margin-top: 5px;
+
+    color: var(--dark);
+
+    font-size: 1.6rem;
+}
+
+.review-form-header p {
+    margin-top: 8px;
 
     color: var(--gray);
 
     font-size: 0.85rem;
 }
 
-.rating-select {
-    display: flex;
+/* =========================================================
+   REVIEW FORM
+========================================================= */
 
-    flex-wrap: wrap;
-
-    gap: 8px;
+.review-form-card .form-group {
+    margin-bottom: 18px;
 }
 
-.rating-select label {
-    cursor: pointer;
+.review-form-card .form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #354153;
+
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
-.rating-select input {
-    position: absolute;
+.review-form-card input,
+.review-form-card textarea,
+.review-form-card select {
+    width: 100%;
 
-    opacity: 0;
-
-    pointer-events: none;
-}
-
-.rating-select span {
-    width: 44px;
-    height: 40px;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid var(--border);
-
-    border-radius: 7px;
+    padding: 13px 14px;
 
     background: white;
 
-    color: #a1a9b5;
+    border: 1px solid #d9e0e8;
 
-    font-size: 1rem;
+    border-radius: 7px;
 
-    transition: 0.2s ease;
+    color: var(--dark);
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.rating-select label:hover span,
-.rating-select input:checked + span {
-    background: var(--blue-light);
-
+.review-form-card input:focus,
+.review-form-card textarea:focus,
+.review-form-card select:focus {
     border-color: var(--blue);
 
-    color: var(--blue);
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 224, 0.09);
 }
+
+.review-form-card textarea {
+    min-height: 145px;
+
+    resize: vertical;
+}
+
+/* =========================================================
+   REVIEW SUBMIT
+========================================================= */
 
 .review-submit {
     width: 100%;
 
-    margin-top: 8px;
+    margin-top: 5px;
 
     border: none;
 
     cursor: pointer;
 }
+
+.review-submit:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+/* =========================================================
+   REVIEW SUCCESS
+========================================================= */
 
 .review-success {
     display: none;
@@ -1619,6 +1788,8 @@ nav a:hover {
 
     font-size: 0.8rem;
 
+    line-height: 1.5;
+
     text-align: center;
 }
 
@@ -1626,6 +1797,21 @@ nav a:hover {
     display: block;
 }
 
+/* =========================================================
+   REVIEW FORM NOTE
+========================================================= */
+
+.review-form-card .form-note {
+    margin-top: 12px;
+
+    color: #788393;
+
+    font-size: 0.68rem;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
 
 /* =========================================================
    FOOTER
@@ -1705,7 +1891,6 @@ nav a:hover {
     font-size: 0.68rem;
 }
 
-
 /* =========================================================
    TABLET
 ========================================================= */
@@ -1720,6 +1905,7 @@ nav a:hover {
 
     .hero-card {
         width: 100%;
+
         max-width: 700px;
 
         margin: 0 auto;
@@ -1755,11 +1941,20 @@ nav a:hover {
         gap: 50px;
     }
 
-    .reviews-grid {
-        grid-template-columns: 1fr 1fr;
+    .reviews-layout {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .public-reviews {
+        order: 1;
+    }
+
+    .review-form-card {
+        order: 2;
     }
 }
-
 
 /* =========================================================
    MOBILE NAVIGATION
@@ -1784,10 +1979,7 @@ nav a:hover {
         padding-right: 20px;
     }
 
-
-    /* -----------------------------------------
-       NAVBAR
-    ----------------------------------------- */
+    /* NAVBAR */
 
     .navbar {
         width: 100%;
@@ -1817,10 +2009,7 @@ nav a:hover {
         white-space: nowrap;
     }
 
-
-    /* -----------------------------------------
-       HAMBURGER
-    ----------------------------------------- */
+    /* HAMBURGER */
 
     .menu-toggle {
         display: flex;
@@ -1853,10 +2042,7 @@ nav a:hover {
         color: var(--blue);
     }
 
-
-    /* -----------------------------------------
-       MOBILE NAV
-    ----------------------------------------- */
+    /* MOBILE NAV */
 
     nav#navMenu {
         position: absolute;
@@ -1943,10 +2129,7 @@ nav a:hover {
         background: #f7faff;
     }
 
-
-    /* -----------------------------------------
-       HERO
-    ----------------------------------------- */
+    /* HERO */
 
     .hero {
         width: 100%;
@@ -2028,10 +2211,7 @@ nav a:hover {
         font-size: 1.8rem;
     }
 
-
-    /* -----------------------------------------
-       TRUST
-    ----------------------------------------- */
+    /* TRUST */
 
     .trust-content {
         grid-template-columns: 1fr 1fr;
@@ -2055,10 +2235,7 @@ nav a:hover {
         border-bottom: none;
     }
 
-
-    /* -----------------------------------------
-       SECTIONS
-    ----------------------------------------- */
+    /* SECTIONS */
 
     .section {
         padding: 80px 0;
@@ -2078,10 +2255,7 @@ nav a:hover {
         font-size: clamp(2rem, 8vw, 2.9rem);
     }
 
-
-    /* -----------------------------------------
-       SERVICES
-    ----------------------------------------- */
+    /* SERVICES */
 
     .services-grid {
         width: 100%;
@@ -2101,10 +2275,7 @@ nav a:hover {
         min-height: auto;
     }
 
-
-    /* -----------------------------------------
-       PROCESS
-    ----------------------------------------- */
+    /* PROCESS */
 
     .process-grid {
         width: 100%;
@@ -2118,10 +2289,7 @@ nav a:hover {
         padding-right: 0;
     }
 
-
-    /* -----------------------------------------
-       PORTFOLIO
-    ----------------------------------------- */
+    /* PORTFOLIO */
 
     .portfolio-grid {
         width: 100%;
@@ -2183,10 +2351,7 @@ nav a:hover {
         min-height: 260px;
     }
 
-
-    /* -----------------------------------------
-       ABOUT
-    ----------------------------------------- */
+    /* ABOUT */
 
     .about-grid {
         width: 100%;
@@ -2227,10 +2392,7 @@ nav a:hover {
         height: 400px;
     }
 
-
-    /* -----------------------------------------
-       ABOUT HIGHLIGHTS
-    ----------------------------------------- */
+    /* ABOUT HIGHLIGHTS */
 
     .about-highlights {
         width: 100%;
@@ -2244,10 +2406,7 @@ nav a:hover {
         min-width: 0;
     }
 
-
-    /* -----------------------------------------
-       CTA
-    ----------------------------------------- */
+    /* CTA */
 
     .cta {
         padding: 65px 0;
@@ -2269,10 +2428,7 @@ nav a:hover {
         width: 100%;
     }
 
-
-    /* -----------------------------------------
-       CONTACT
-    ----------------------------------------- */
+    /* CONTACT */
 
     .contact-grid {
         width: 100%;
@@ -2309,33 +2465,36 @@ nav a:hover {
         min-width: 0;
     }
 
-
-    /* -----------------------------------------
-       REVIEWS
-    ----------------------------------------- */
-
-    .reviews-grid {
-        grid-template-columns: 1fr;
-    }
+    /* REVIEWS */
 
     .reviews-layout {
         width: 100%;
 
         grid-template-columns: 1fr;
+
+        gap: 25px;
     }
 
-    .review-form-card,
     .public-reviews,
-    .review-form-wrapper {
+    .review-form-card {
         width: 100%;
 
         min-width: 0;
     }
 
+    .review-card {
+        padding: 25px;
+    }
 
-    /* -----------------------------------------
-       FOOTER
-    ----------------------------------------- */
+    .review-form-card {
+        padding: 25px;
+    }
+
+    .review-text {
+        font-size: 0.88rem;
+    }
+
+    /* FOOTER */
 
     .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -2355,7 +2514,6 @@ nav a:hover {
         gap: 10px;
     }
 }
-
 
 /* =========================================================
    SMALL PHONES
@@ -2482,8 +2640,21 @@ nav a:hover {
         padding: 24px 18px;
     }
 
-    .review-form-wrapper {
-        padding: 24px 18px;
+    .review-card {
+        padding: 22px;
+    }
+
+    .review-form-card {
+        padding: 22px 18px;
+    }
+
+    .review-stars {
+        font-size: 0.95rem;
+    }
+
+    .review-author-icon {
+        width: 40px;
+        height: 40px;
     }
 
     .footer-grid {
@@ -2494,7 +2665,6 @@ nav a:hover {
         grid-column: span 1;
     }
 }
-
 
 /* =========================================================
    EXTRA SMALL PHONES
@@ -2536,7 +2706,6 @@ nav a:hover {
     }
 }
 
-
 /* =========================================================
    ACCESSIBILITY / MOBILE TOUCH
 ========================================================= */
@@ -2545,11 +2714,11 @@ nav a:hover {
 
     .btn:hover,
     .service-card:hover,
-    .portfolio-card:hover {
+    .portfolio-card:hover,
+    .review-card:hover {
         transform: none;
     }
 }
-
 
 /* =========================================================
    PREVENT MOBILE TEXT / ELEMENT OVERFLOW
