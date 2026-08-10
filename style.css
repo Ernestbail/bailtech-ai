@@ -119,7 +119,9 @@ img {
     color: var(--blue);
 }
 
-/* Desktop Navigation */
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
 
 nav {
     display: flex;
@@ -990,7 +992,7 @@ nav a:hover {
 }
 
 .project-visit {
-    display: inline-block;
+    display: inline-flex;
 
     margin-top: 18px;
 
@@ -998,6 +1000,8 @@ nav a:hover {
 
     font-size: 0.8rem;
     font-weight: 700;
+
+    transition: color 0.2s ease;
 }
 
 .project-visit:hover {
@@ -1440,15 +1444,15 @@ nav a:hover {
 
     padding: 12px;
 
-    background: #eef8f0;
+    border-radius: 7px;
 
-    border-radius: 8px;
+    background: #eef8f0;
 
     color: #24713b;
 
-    text-align: center;
-
     font-size: 0.8rem;
+
+    text-align: center;
 }
 
 .form-success.show {
@@ -1471,6 +1475,10 @@ nav a:hover {
 
     text-align: center;
 }
+
+/* =========================================================
+   REVIEWS LAYOUT
+========================================================= */
 
 .reviews-layout {
     display: grid;
@@ -1548,7 +1556,20 @@ nav a:hover {
 }
 
 /* =========================================================
-   REVIEW STARS
+   REVIEW CARD TOP
+========================================================= */
+
+.review-card-top {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+/* =========================================================
+   STARS
 ========================================================= */
 
 .review-stars {
@@ -1559,6 +1580,30 @@ nav a:hover {
     letter-spacing: 3px;
 
     line-height: 1;
+}
+
+/* =========================================================
+   VERIFIED REVIEW
+========================================================= */
+
+.review-verified {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 6px 10px;
+
+    border-radius: 5px;
+
+    background: #eef8f0;
+
+    color: #24713b;
+
+    font-size: 0.65rem;
+
+    font-weight: 700;
+
+    white-space: nowrap;
 }
 
 /* =========================================================
@@ -1587,6 +1632,7 @@ nav a:hover {
     gap: 12px;
 
     margin-top: 25px;
+
     padding-top: 20px;
 
     border-top: 1px solid var(--border);
@@ -1610,6 +1656,7 @@ nav a:hover {
     color: var(--blue);
 
     font-size: 0.75rem;
+
     font-weight: 800;
 }
 
@@ -1632,26 +1679,15 @@ nav a:hover {
 }
 
 /* =========================================================
-   VERIFIED REVIEW
+   REVIEW DATE
 ========================================================= */
 
-.review-verified {
-    display: inline-flex;
+.review-date {
+    margin-top: 3px;
 
-    align-items: center;
+    color: #8a94a3;
 
-    margin-top: 18px;
-
-    padding: 6px 10px;
-
-    border-radius: 5px;
-
-    background: #eef8f0;
-
-    color: #24713b;
-
-    font-size: 0.68rem;
-    font-weight: 700;
+    font-size: 0.65rem;
 }
 
 /* =========================================================
@@ -1707,6 +1743,7 @@ nav a:hover {
     color: #354153;
 
     font-size: 0.75rem;
+
     font-weight: 700;
 }
 
@@ -1748,7 +1785,7 @@ nav a:hover {
 }
 
 /* =========================================================
-   REVIEW SUBMIT
+   REVIEW SUBMIT BUTTON
 ========================================================= */
 
 .review-submit {
@@ -1770,7 +1807,7 @@ nav a:hover {
 }
 
 /* =========================================================
-   REVIEW SUCCESS
+   REVIEW SUCCESS MESSAGE
 ========================================================= */
 
 .review-success {
@@ -1811,6 +1848,58 @@ nav a:hover {
     line-height: 1.5;
 
     text-align: center;
+}
+
+/* =========================================================
+   REVIEW EMPTY STATE
+========================================================= */
+
+.review-placeholder {
+    padding: 45px 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 1px dashed #cbd6e3;
+
+    border-radius: 14px;
+}
+
+.review-placeholder-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: var(--blue-light);
+
+    color: #f4b400;
+
+    font-size: 1.4rem;
+}
+
+.review-placeholder h3 {
+    color: var(--dark);
+
+    font-size: 1.3rem;
+}
+
+.review-placeholder p {
+    max-width: 430px;
+
+    margin: 10px auto 22px;
+
+    color: var(--gray);
+
+    font-size: 0.85rem;
 }
 
 /* =========================================================
@@ -2490,8 +2579,20 @@ nav a:hover {
         padding: 25px;
     }
 
+    .review-card-top {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
     .review-text {
         font-size: 0.88rem;
+    }
+
+    .review-placeholder {
+        padding: 35px 22px;
     }
 
     /* FOOTER */
@@ -2640,11 +2741,11 @@ nav a:hover {
         padding: 24px 18px;
     }
 
-    .review-card {
-        padding: 22px;
+    .review-form-card {
+        padding: 24px 18px;
     }
 
-    .review-form-card {
+    .review-card {
         padding: 22px 18px;
     }
 
@@ -2655,6 +2756,10 @@ nav a:hover {
     .review-author-icon {
         width: 40px;
         height: 40px;
+    }
+
+    .review-placeholder {
+        padding: 30px 18px;
     }
 
     .footer-grid {
@@ -2703,6 +2808,14 @@ nav a:hover {
     .about-content h2,
     .contact-info h2 {
         font-size: 1.95rem;
+    }
+
+    .review-card {
+        padding: 20px 16px;
+    }
+
+    .review-form-card {
+        padding: 22px 16px;
     }
 }
 
