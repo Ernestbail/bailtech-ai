@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =====================================================
+    /* =========================================
        MOBILE HAMBURGER MENU
-    ===================================================== */
+    ========================================= */
 
     const menuToggle = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
 
     if (menuToggle && navMenu) {
 
-        menuToggle.addEventListener("click", function (event) {
+        menuToggle.addEventListener("click", function () {
 
-            event.stopPropagation();
+            const isOpen = navMenu.classList.toggle("active");
 
-            const isOpen = menuToggle.classList.toggle("active");
-
-            navMenu.classList.toggle("active", isOpen);
+            menuToggle.classList.toggle("active", isOpen);
 
             menuToggle.setAttribute(
                 "aria-expanded",
@@ -30,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* Close menu when navigation link is clicked */
+        /* =========================================
+           CLOSE MENU AFTER CLICKING A LINK
+        ========================================= */
 
         const navLinks = navMenu.querySelectorAll("a");
 
@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             link.addEventListener("click", function () {
 
-                menuToggle.classList.remove("active");
-
                 navMenu.classList.remove("active");
+
+                menuToggle.classList.remove("active");
 
                 menuToggle.setAttribute(
                     "aria-expanded",
@@ -57,7 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* Close menu when clicking outside */
+        /* =========================================
+           CLOSE MENU WHEN CLICKING OUTSIDE
+        ========================================= */
 
         document.addEventListener("click", function (event) {
 
@@ -68,14 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 menuToggle.contains(event.target);
 
             if (
+                navMenu.classList.contains("active") &&
                 !clickedInsideMenu &&
-                !clickedToggle &&
-                navMenu.classList.contains("active")
+                !clickedToggle
             ) {
 
-                menuToggle.classList.remove("active");
-
                 navMenu.classList.remove("active");
+
+                menuToggle.classList.remove("active");
 
                 menuToggle.setAttribute(
                     "aria-expanded",
@@ -92,7 +94,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* Close menu when pressing Escape */
+        /* =========================================
+           CLOSE MENU WITH ESCAPE KEY
+        ========================================= */
 
         document.addEventListener("keydown", function (event) {
 
@@ -101,9 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 navMenu.classList.contains("active")
             ) {
 
-                menuToggle.classList.remove("active");
-
                 navMenu.classList.remove("active");
+
+                menuToggle.classList.remove("active");
 
                 menuToggle.setAttribute(
                     "aria-expanded",
@@ -121,37 +125,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-
-        /* Close mobile menu if window becomes desktop size */
-
-        window.addEventListener("resize", function () {
-
-            if (window.innerWidth > 750) {
-
-                menuToggle.classList.remove("active");
-
-                navMenu.classList.remove("active");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
-
-            }
-
-        });
-
     }
 
 
-    /* =====================================================
+    /* =========================================
        CONTACT FORM — FORMSPREE
-    ===================================================== */
+    ========================================= */
 
     const contactForm =
         document.getElementById("contactForm");
@@ -172,6 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.preventDefault();
 
 
+                /* Disable button */
+
                 if (contactSubmit) {
 
                     contactSubmit.disabled = true;
@@ -181,6 +162,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
+                /* Clear previous message */
 
                 if (formSuccess) {
 
@@ -211,6 +194,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (response.ok) {
 
+                        /* Success message */
+
                         if (formSuccess) {
 
                             formSuccess.textContent =
@@ -223,8 +208,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
 
 
+                        /* Reset form */
+
                         contactForm.reset();
 
+
+                        /* Update button */
 
                         if (contactSubmit) {
 
@@ -232,6 +221,24 @@ document.addEventListener("DOMContentLoaded", function () {
                                 "Request Sent ✓";
 
                         }
+
+
+                        /* Return button to normal */
+
+                        setTimeout(function () {
+
+                            if (contactSubmit) {
+
+                                contactSubmit.disabled =
+                                    false;
+
+                                contactSubmit.textContent =
+                                    "Send Project Request →";
+
+                            }
+
+                        }, 5000);
+
 
                     } else {
 
@@ -263,7 +270,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (contactSubmit) {
 
-                        contactSubmit.disabled = false;
+                        contactSubmit.disabled =
+                            false;
 
                         contactSubmit.textContent =
                             "Send Project Request →";
@@ -278,9 +286,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================================
+    /* =========================================
        REVIEW FORM — FORMSPREE
-    ===================================================== */
+    ========================================= */
 
     const reviewForm =
         document.getElementById("reviewForm");
@@ -301,6 +309,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.preventDefault();
 
 
+                /* Disable button */
+
                 if (reviewSubmit) {
 
                     reviewSubmit.disabled = true;
@@ -310,6 +320,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
+                /* Clear previous message */
 
                 if (reviewSuccess) {
 
@@ -342,6 +354,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (response.ok) {
 
+                        /* Success message */
+
                         if (reviewSuccess) {
 
                             reviewSuccess.textContent =
@@ -354,8 +368,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
 
 
+                        /* Reset form */
+
                         reviewForm.reset();
 
+
+                        /* Update button */
 
                         if (reviewSubmit) {
 
@@ -363,6 +381,24 @@ document.addEventListener("DOMContentLoaded", function () {
                                 "Review Submitted ✓";
 
                         }
+
+
+                        /* Return button to normal */
+
+                        setTimeout(function () {
+
+                            if (reviewSubmit) {
+
+                                reviewSubmit.disabled =
+                                    false;
+
+                                reviewSubmit.textContent =
+                                    "Submit Review →";
+
+                            }
+
+                        }, 5000);
+
 
                     } else {
 
@@ -394,7 +430,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (reviewSubmit) {
 
-                        reviewSubmit.disabled = false;
+                        reviewSubmit.disabled =
+                            false;
 
                         reviewSubmit.textContent =
                             "Submit Review →";
@@ -409,9 +446,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================================
+    /* =========================================
        SMOOTH SCROLL
-    ===================================================== */
+    ========================================= */
 
     const allLinks =
         document.querySelectorAll(
@@ -429,26 +466,46 @@ document.addEventListener("DOMContentLoaded", function () {
                     this.getAttribute("href");
 
 
+                /* Ignore empty # links */
+
                 if (
-                    targetId &&
-                    targetId !== "#"
+                    !targetId ||
+                    targetId === "#"
                 ) {
 
-                    const target =
-                        document.querySelector(
+                    return;
+
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (target) {
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+
+                    /* Update URL without jumping */
+
+                    if (
+                        history.pushState
+                    ) {
+
+                        history.pushState(
+                            null,
+                            "",
                             targetId
                         );
-
-
-                    if (target) {
-
-                        event.preventDefault();
-
-
-                        target.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
 
                     }
 
@@ -460,59 +517,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* =====================================================
-       PREVENT FORM BUTTON DOUBLE CLICKS
-    ===================================================== */
+    /* =========================================
+       PROJECT LINKS
+    ========================================= */
 
-    const forms =
-        document.querySelectorAll("form");
-
-
-    forms.forEach(function (form) {
-
-        form.addEventListener(
-            "invalid",
-            function () {
-
-                const firstInvalid =
-                    form.querySelector(
-                        ":invalid"
-                    );
-
-
-                if (firstInvalid) {
-
-                    firstInvalid.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center"
-                    });
-
-                }
-
-            },
-            true
+    const projectLinks =
+        document.querySelectorAll(
+            ".project-link, .project-visit"
         );
 
-    });
 
+    projectLinks.forEach(function (link) {
 
-    /* =====================================================
-       IMAGE ERROR HANDLING
-    ===================================================== */
-
-    const images =
-        document.querySelectorAll("img");
-
-
-    images.forEach(function (image) {
-
-        image.addEventListener(
-            "error",
+        link.addEventListener(
+            "click",
             function () {
 
-                console.warn(
-                    "Image could not be loaded:",
-                    image.src
+                /*
+                 * External project links are allowed
+                 * to open normally in a new tab.
+                 */
+
+                console.log(
+                    "Opening project:",
+                    link.href
                 );
 
             }
@@ -521,26 +549,70 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* =====================================================
-       INITIALIZE MENU ACCESSIBILITY
-    ===================================================== */
+    /* =========================================
+       ACCESSIBILITY — ENTER/SPACE MENU
+    ========================================= */
 
-    if (menuToggle && navMenu) {
+    if (menuToggle) {
 
-        menuToggle.classList.remove("active");
+        menuToggle.addEventListener(
+            "keydown",
+            function (event) {
 
-        navMenu.classList.remove("active");
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
-        );
+                    event.preventDefault();
 
-        menuToggle.setAttribute(
-            "aria-label",
-            "Open navigation"
+                    menuToggle.click();
+
+                }
+
+            }
         );
 
     }
+
+
+    /* =========================================
+       WINDOW RESIZE
+       CLOSE MOBILE MENU ON DESKTOP
+    ========================================= */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (
+                window.innerWidth > 768 &&
+                navMenu &&
+                menuToggle
+            ) {
+
+                navMenu.classList.remove(
+                    "active"
+                );
+
+                menuToggle.classList.remove(
+                    "active"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
+
+            }
+
+        }
+    );
+
 
 });
