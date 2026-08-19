@@ -1,4 +1,5 @@
-  BAILTECH AI
+/* =========================================================
+   BAILTECH AI
    WHITE / BLUE / GRAY DESIGN
    RESPONSIVE VERSION
 ========================================================= */
@@ -103,6 +104,25 @@ img {
     justify-content: space-between;
 
     position: relative;
+}
+
+
+/* =========================================================
+   BAILTECH AI BUSINESS LOGO
+========================================================= */
+
+.logo-image-link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo-image {
+    display: block;
+    width: 145px;
+    height: auto;
+    max-height: 62px;
+    object-fit: contain;
 }
 
 .logo {
@@ -659,7 +679,7 @@ nav a:hover {
 }
 
 .service-card li::before {
-    content: "✓";
+    content: "âœ“";
 
     position: absolute;
 
@@ -2091,6 +2111,22 @@ nav a:hover {
         justify-content: space-between;
     }
 
+
+
+    .logo-image-link {
+        width: 130px;
+        max-width: calc(100% - 60px);
+    }
+
+    .nav-logo-image {
+        width: 130px;
+        height: auto;
+        max-height: 54px;
+        object-fit: contain;
+        transform: none;
+    }
+
+
     .logo {
         font-size: 1.2rem;
 
@@ -2633,6 +2669,19 @@ nav a:hover {
         min-height: 64px;
     }
 
+    .logo-image-link {
+        width: 120px;
+        max-width: calc(100% - 58px);
+    }
+
+    .nav-logo-image {
+        width: 120px;
+        height: auto;
+        max-height: 50px;
+        object-fit: contain;
+        transform: none;
+    }
+
     .logo {
         font-size: 1.1rem;
     }
@@ -2782,6 +2831,16 @@ nav a:hover {
         padding-right: 14px;
     }
 
+    .logo-image-link {
+        width: 108px;
+        max-width: calc(100% - 54px);
+    }
+
+    .nav-logo-image {
+        width: 108px;
+        max-height: 46px;
+    }
+
     .logo {
         font-size: 1rem;
     }
@@ -2855,4 +2914,3 @@ footer,
 article {
     max-width: 100%;
 }
-
