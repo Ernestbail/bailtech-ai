@@ -2985,3 +2985,94 @@ footer,
 article {
     max-width: 100%;
 }
+/* =========================================================
+   BAILTECH AI BUSINESS LOGO
+========================================================= */
+
+.logo-image-link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo-image {
+    display: block;
+    width: 145px;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   LINKEDIN
+========================================================= */
+
+.social-contact-icon {
+    background: #eaf3ff;
+    color: #1769e0;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: lowercase;
+}
+
+.linkedin-link {
+    color: #172033;
+    transition: color 0.25s ease;
+}
+
+.linkedin-link:hover {
+    color: #1769e0;
+}
+
+
+/* =========================================================
+   FOOTER LOGO
+========================================================= */
+
+.footer-logo-image-link {
+    display: inline-block;
+}
+
+.footer-logo-image {
+    width: 185px;
+    height: auto;
+    display: block;
+
+    /* Logo has a white background which blends nicely
+       into its own clean logo card */
+    background: #ffffff;
+    padding: 7px;
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE LOGO
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .nav-logo-image {
+        width: 120px;
+    }
+
+    .footer-logo-image {
+        width: 170px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .nav-logo-image {
+        width: 108px;
+    }
+
+    .footer-logo-image {
+        width: 155px;
+    }
+}
