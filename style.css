@@ -587,15 +587,14 @@ nav a:hover {
 
 .service-card {
     position: relative;
-
+    height: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
     padding: 34px 28px;
-
     background: white;
-
     border: 1px solid var(--border);
-
     border-radius: 12px;
-
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
@@ -650,44 +649,39 @@ nav a:hover {
 }
 
 .service-card p {
-    min-height: 125px;
-
+    min-height: 0;
+    margin-bottom: 22px;
     color: var(--gray);
-
     font-size: 0.9rem;
 }
 
 .service-card ul {
-    margin-top: 20px;
+    width: 100%;
+    margin-top: auto;
     padding-top: 20px;
-
     border-top: 1px solid var(--border);
-
     list-style: none;
 }
 
 .service-card li {
-    position: relative;
-
-    padding-left: 17px;
-
-    margin: 7px 0;
-
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 8px 0;
+    padding: 0;
     color: #536071;
-
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
 }
 
 .service-card li::before {
     content: "âœ“";
-
-    position: absolute;
-
-    left: 0;
-
+    position: static;
+    flex: 0 0 auto;
+    width: 16px;
     color: var(--blue);
-
     font-weight: 800;
+    line-height: 1.45;
 }
 
 /* =========================================================
@@ -1025,6 +1019,75 @@ nav a:hover {
 
 .project-visit:hover {
     color: var(--blue-dark);
+}
+
+/* =========================================================
+   GENESIS & CO. LEGACY SERVICES PROJECT
+========================================================= */
+
+.genesis-preview {
+    min-height: 310px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 34px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #f8f7f2, #eef3f0);
+}
+
+.genesis-logo-wrap {
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.genesis-logo-image {
+    display: block;
+    width: min(100%, 390px);
+    max-height: 220px;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+.genesis-logo-fallback {
+    width: min(100%, 390px);
+    padding: 34px 24px;
+    text-align: center;
+    color: #173d2e;
+}
+
+.genesis-logo-fallback small,
+.genesis-logo-fallback strong,
+.genesis-logo-fallback span {
+    display: block;
+}
+
+.genesis-logo-fallback small {
+    font-size: 0.7rem;
+    letter-spacing: 0.26em;
+}
+
+.genesis-logo-fallback strong {
+    margin: 8px 0 16px;
+    font-size: 1.85rem;
+    line-height: 1.1;
+}
+
+.genesis-logo-fallback span {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    color: #8a7446;
+}
+
+.project-link:hover .genesis-logo-image {
+    transform: scale(1.025);
+}
+
+.genesis-logo-image {
+    transition: transform 0.25s ease;
 }
 
 /* =========================================================
@@ -2913,4 +2976,53 @@ main,
 footer,
 article {
     max-width: 100%;
+}
+
+
+
+/* =========================================================
+   BAILTECH FINAL SERVICE + GENESIS SAFETY FIXES
+========================================================= */
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        height: auto;
+    }
+
+    .service-card p {
+        margin-bottom: 20px;
+    }
+
+    .genesis-preview {
+        min-height: 260px;
+        padding: 24px 18px;
+    }
+
+    .genesis-logo-wrap {
+        min-height: 190px;
+    }
+
+    .genesis-logo-image {
+        width: min(88%, 340px);
+        max-height: 190px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        padding: 28px 22px;
+    }
+
+    .service-card li {
+        font-size: 0.82rem;
+    }
+
+    .genesis-logo-image {
+        width: min(92%, 300px);
+        max-height: 170px;
+    }
 }
