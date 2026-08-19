@@ -3027,71 +3027,47 @@ article {
     }
 
 /* =========================================================
-   PORTFOLIO IMAGE SIZE FIX
-   Face Doctress + Genesis same size
+   MATCH PORTFOLIO LOGO VISUAL SIZE
 ========================================================= */
 
-.beauty-preview,
-.genesis-preview {
-    width: 100%;
-    height: 310px;
-    min-height: 310px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-/* GENESIS LOGO */
-.genesis-logo-wrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Genesis logo size */
 .genesis-logo-image {
-    width: 100%;
-    max-width: 390px;
-    height: 100%;
-    max-height: 240px;
-    object-fit: contain;
-    object-position: center;
-    margin: 0 auto;
+    width: 320px !important;
+    max-width: 82% !important;
+    height: 190px !important;
+    object-fit: contain !important;
 }
 
-/* FACE DOCTRESS */
+/* Face Doctress logo area */
 .beauty-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-   /* =========================================================
-   ENLARGE THE FACE DOCTRESS PORTFOLIO LOGO
-========================================================= */
+    width: 320px !important;
+    max-width: 82% !important;
+    height: 190px !important;
 
-.beauty-content {
-    transform: scale(1.28);
-    transform-origin: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    transform: none !important;
 }
 
+/* Make Face Doctress lettering fill that area */
 .beauty-content strong {
-    font-size: 2.7rem;
+    font-size: 3.4rem !important;
+    line-height: 1 !important;
 }
 
 .beauty-content small {
-    font-size: 0.72rem;
+    font-size: 0.85rem !important;
 }
 
 .beauty-content span {
-    font-size: 0.66rem;
+    font-size: 0.72rem !important;
 }
 
 .beauty-line {
-    width: 70px;
+    width: 85px !important;
+    margin: 14px auto !important;
 }
  }
