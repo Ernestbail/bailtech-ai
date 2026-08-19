@@ -3025,7 +3025,7 @@ article {
         width: min(92%, 300px);
         max-height: 170px;
     }
-}
+
 /* =========================================================
    PORTFOLIO IMAGE SIZE FIX
    Face Doctress + Genesis same size
@@ -3070,3 +3070,4 @@ article {
     align-items: center;
     justify-content: center;
 }
+ }
