@@ -3070,4 +3070,28 @@ article {
     align-items: center;
     justify-content: center;
 }
+   /* =========================================================
+   ENLARGE THE FACE DOCTRESS PORTFOLIO LOGO
+========================================================= */
+
+.beauty-content {
+    transform: scale(1.28);
+    transform-origin: center;
+}
+
+.beauty-content strong {
+    font-size: 2.7rem;
+}
+
+.beauty-content small {
+    font-size: 0.72rem;
+}
+
+.beauty-content span {
+    font-size: 0.66rem;
+}
+
+.beauty-line {
+    width: 70px;
+}
  }
