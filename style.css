@@ -675,7 +675,7 @@ nav a:hover {
 }
 
 .service-card li::before {
-    content: ""✓"";
+    content: "✓";
     position: static;
     flex: 0 0 auto;
     width: 16px;
