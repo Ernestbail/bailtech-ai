@@ -498,7 +498,154 @@ if (reviewForm) {
     );
 
 }
+/* =========================================
+   LOAD PUBLISHED REVIEWS FROM SUPABASE
+========================================= */
 
+async function loadPublishedReviews() {
+
+    const reviewsContainer =
+        document.getElementById("supabaseReviews");
+
+
+    if (!reviewsContainer) {
+        return;
+    }
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("reviews")
+                .select(
+                    "name, business_name, rating, review_text, created_at"
+                )
+                .eq("published", true)
+                .order("created_at", {
+                    ascending: false
+                });
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        reviewsContainer.innerHTML = "";
+
+
+        if (!data || data.length === 0) {
+            return;
+        }
+
+
+        data.forEach(function (review) {
+
+            const article =
+                document.createElement("article");
+
+            article.className =
+                "review-card";
+
+
+            const stars =
+                "★".repeat(review.rating) +
+                "☆".repeat(5 - review.rating);
+
+
+            const initials =
+                review.business_name
+                    .split(" ")
+                    .map(function (word) {
+                        return word.charAt(0);
+                    })
+                    .join("")
+                    .substring(0, 2)
+                    .toUpperCase();
+
+
+            const date =
+                review.created_at
+                    ? new Date(
+                          review.created_at
+                      ).toLocaleDateString(
+                          "en-US",
+                          {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric"
+                          }
+                      )
+                    : "";
+
+
+            article.innerHTML = `
+                <div
+                    class="review-stars"
+                    aria-label="${review.rating} out of 5 stars"
+                >
+                    ${stars}
+                </div>
+
+                <p class="review-text">
+                    “${review.review_text}”
+                </p>
+
+                <div class="review-author">
+
+                    <div class="review-author-icon">
+                        ${initials}
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ${review.business_name}
+                        </strong>
+
+                        <span>
+                            ${review.name}
+                        </span>
+
+                        ${
+                            date
+                                ? `<div class="review-date">${date}</div>`
+                                : ""
+                        }
+
+                    </div>
+
+                </div>
+
+                <div class="review-verified">
+                    ✓ Verified Customer
+                </div>
+            `;
+
+
+            reviewsContainer.appendChild(
+                article
+            );
+
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading published reviews:",
+            error
+        );
+
+    }
+
+}
+
+
+/* Load approved reviews when page opens */
+
+loadPublishedReviews();
     /* =========================================
        SMOOTH SCROLL
     ========================================= */
