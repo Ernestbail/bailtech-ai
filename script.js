@@ -353,15 +353,15 @@ if (reviewForm) {
 
             /* Get review information */
 
-            const name =
-                document.getElementById(
-                    "reviewName"
-                ).value.trim();
-
-
             const businessName =
                 document.getElementById(
                     "reviewBusiness"
+                ).value.trim();
+
+
+            const service =
+                document.getElementById(
+                    "reviewService"
                 ).value.trim();
 
 
@@ -382,13 +382,12 @@ if (reviewForm) {
             try {
 
                 /*
-                 * We DO NOT send published: true.
+                 * We do not set "published" here.
                  *
-                 * Supabase defaults published
-                 * to FALSE.
+                 * The Supabase trigger decides:
                  *
-                 * The review stays hidden until
-                 * you approve it.
+                 * 4-5 stars = published true
+                 * 1-3 stars = published false
                  */
 
                 const { error } =
@@ -396,12 +395,14 @@ if (reviewForm) {
                         .from("reviews")
                         .insert([
                             {
-                                name: name,
-
                                 business_name:
                                     businessName,
 
-                                rating: rating,
+                                service:
+                                    service,
+
+                                rating:
+                                    rating,
 
                                 review_text:
                                     reviewText
@@ -421,7 +422,7 @@ if (reviewForm) {
                 if (reviewSuccess) {
 
                     reviewSuccess.textContent =
-                        "Thank you! Your review has been submitted and is awaiting approval.";
+                        "Thank you! Your review has been submitted successfully.";
 
                     reviewSuccess.classList.add(
                         "show"
