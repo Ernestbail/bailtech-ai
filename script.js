@@ -520,8 +520,8 @@ async function loadPublishedReviews() {
             await supabaseClient
                 .from("reviews")
                 .select(
-                    "name, business_name, rating, review_text, created_at"
-                )
+    "business_name, service, rating, review_text, created_at"
+)
                 .eq("published", true)
                 .order("created_at", {
                     ascending: false
@@ -602,12 +602,12 @@ async function loadPublishedReviews() {
                     <div>
 
                         <strong>
-                            ${review.business_name}
-                        </strong>
+    ${review.business_name}
+</strong>
 
-                        <span>
-                            ${review.name}
-                        </span>
+<span>
+    ${review.service || "BailTech AI Service"}
+</span>
 
                         ${
                             date
