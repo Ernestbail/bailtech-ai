@@ -286,147 +286,168 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =========================================
-       REVIEW FORM — FORMSPREE
-    ========================================= */
+  /* =========================================
+   SUPABASE REVIEW SYSTEM
+========================================= */
 
-    const reviewForm =
-        document.getElementById("reviewForm");
+const supabaseUrl =
+    "https://hemwetgtyqsqeaauioqu.supabase.co";
 
-    const reviewSubmit =
-        document.getElementById("reviewSubmit");
+const supabaseKey =
+    "sb_publishable_-UmAz5_q20Svn1VW6qRR9w_kgRL5Q3c";
 
-    const reviewSuccess =
-        document.getElementById("reviewSuccess");
-
-
-    if (reviewForm) {
-
-        reviewForm.addEventListener(
-            "submit",
-            async function (event) {
-
-                event.preventDefault();
+const supabaseClient =
+    window.supabase.createClient(
+        supabaseUrl,
+        supabaseKey
+    );
 
 
-                /* Disable button */
+/* =========================================
+   REVIEW FORM
+========================================= */
 
-                if (reviewSubmit) {
+const reviewForm =
+    document.getElementById("reviewForm");
 
-                    reviewSubmit.disabled = true;
+const reviewSubmit =
+    document.getElementById("reviewSubmit");
 
-                    reviewSubmit.textContent =
-                        "Submitting...";
+const reviewSuccess =
+    document.getElementById("reviewSuccess");
+
+
+if (reviewForm) {
+
+    reviewForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            /* Disable submit button */
+
+            if (reviewSubmit) {
+
+                reviewSubmit.disabled = true;
+
+                reviewSubmit.textContent =
+                    "Submitting...";
+
+            }
+
+
+            /* Clear previous message */
+
+            if (reviewSuccess) {
+
+                reviewSuccess.textContent = "";
+
+                reviewSuccess.classList.remove(
+                    "show"
+                );
+
+            }
+
+
+            /* Get review information */
+
+            const name =
+                document.getElementById(
+                    "reviewName"
+                ).value.trim();
+
+
+            const businessName =
+                document.getElementById(
+                    "reviewBusiness"
+                ).value.trim();
+
+
+            const rating =
+                Number(
+                    document.getElementById(
+                        "reviewRating"
+                    ).value
+                );
+
+
+            const reviewText =
+                document.getElementById(
+                    "reviewMessage"
+                ).value.trim();
+
+
+            try {
+
+                /*
+                 * We DO NOT send published: true.
+                 *
+                 * Supabase defaults published
+                 * to FALSE.
+                 *
+                 * The review stays hidden until
+                 * you approve it.
+                 */
+
+                const { error } =
+                    await supabaseClient
+                        .from("reviews")
+                        .insert([
+                            {
+                                name: name,
+
+                                business_name:
+                                    businessName,
+
+                                rating: rating,
+
+                                review_text:
+                                    reviewText
+                            }
+                        ]);
+
+
+                if (error) {
+
+                    throw error;
 
                 }
 
 
-                /* Clear previous message */
+                /* Success message */
 
                 if (reviewSuccess) {
 
-                    reviewSuccess.textContent = "";
+                    reviewSuccess.textContent =
+                        "Thank you! Your review has been submitted and is awaiting approval.";
 
-                    reviewSuccess.classList.remove(
+                    reviewSuccess.classList.add(
                         "show"
                     );
 
                 }
 
 
-                try {
+                /* Clear form */
 
-                    const response = await fetch(
-                        reviewForm.action,
-                        {
-                            method: "POST",
-
-                            body:
-                                new FormData(reviewForm),
-
-                            headers: {
-                                "Accept":
-                                    "application/json"
-                            }
-                        }
-                    );
+                reviewForm.reset();
 
 
-                    if (response.ok) {
+                /* Update button */
 
-                        /* Success message */
+                if (reviewSubmit) {
 
-                        if (reviewSuccess) {
+                    reviewSubmit.textContent =
+                        "Review Submitted ✓";
 
-                            reviewSuccess.textContent =
-                                "Thank you! Your review has been submitted successfully.";
-
-                            reviewSuccess.classList.add(
-                                "show"
-                            );
-
-                        }
+                }
 
 
-                        /* Reset form */
+                /* Return button to normal */
 
-                        reviewForm.reset();
-
-
-                        /* Update button */
-
-                        if (reviewSubmit) {
-
-                            reviewSubmit.textContent =
-                                "Review Submitted ✓";
-
-                        }
-
-
-                        /* Return button to normal */
-
-                        setTimeout(function () {
-
-                            if (reviewSubmit) {
-
-                                reviewSubmit.disabled =
-                                    false;
-
-                                reviewSubmit.textContent =
-                                    "Submit Review →";
-
-                            }
-
-                        }, 5000);
-
-
-                    } else {
-
-                        throw new Error(
-                            "Review submission failed."
-                        );
-
-                    }
-
-                } catch (error) {
-
-                    console.error(
-                        "Review form error:",
-                        error
-                    );
-
-
-                    if (reviewSuccess) {
-
-                        reviewSuccess.textContent =
-                            "Something went wrong. Please try again.";
-
-                        reviewSuccess.classList.add(
-                            "show"
-                        );
-
-                    }
-
+                setTimeout(function () {
 
                     if (reviewSubmit) {
 
@@ -438,13 +459,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     }
 
+                }, 5000);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Supabase review error:",
+                    error
+                );
+
+
+                if (reviewSuccess) {
+
+                    reviewSuccess.textContent =
+                        "Something went wrong. Please try again.";
+
+                    reviewSuccess.classList.add(
+                        "show"
+                    );
+
+                }
+
+
+                if (reviewSubmit) {
+
+                    reviewSubmit.disabled =
+                        false;
+
+                    reviewSubmit.textContent =
+                        "Submit Review →";
+
                 }
 
             }
-        );
 
-    }
+        }
+    );
 
+}
 
     /* =========================================
        SMOOTH SCROLL
