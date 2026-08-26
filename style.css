@@ -3250,3 +3250,97 @@ nav a:hover {
     }
 
 }
+/* =========================================================
+   PORTFOLIO CLIENT STORY
+========================================================= */
+
+.project-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    margin-top: 22px;
+    margin-bottom: 22px;
+}
+
+
+/* STORY BOX */
+
+.project-story-item {
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+
+/* HOW WE BROUGHT IT TO LIFE */
+
+.project-story-solution {
+    background: #f2f7ff;
+
+    border: 1px solid #bfdbfe;
+}
+
+
+/* STORY HEADINGS */
+
+.project-story-item h4 {
+    margin: 0 0 10px;
+
+    color: #172033;
+
+    font-size: 0.76rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+.project-story-solution h4 {
+    color: #1769e0;
+}
+
+
+/* STORY TEXT */
+
+.project-story-item p {
+    margin: 0 !important;
+
+    color: #64748b;
+
+    font-size: 0.84rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PORTFOLIO CLIENT STORY — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .project-story {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+        margin-top: 18px;
+        margin-bottom: 20px;
+    }
+
+
+    .project-story-item {
+        padding: 18px;
+    }
+
+
+    .project-story-item p {
+        font-size: 0.82rem;
+        line-height: 1.65;
+    }
+
+}
