@@ -675,7 +675,7 @@ nav a:hover {
 }
 
 .service-card li::before {
-    content: "âœ“";
+    content: "✓";
     position: static;
     flex: 0 0 auto;
     width: 16px;
@@ -3428,21 +3428,20 @@ article {
         padding: 25px 18px;
     }
 
+
     .pricing-label {
         font-size: 0.62rem;
     }
+
 
     .pricing-price strong {
         font-size: 1.85rem;
     }
 
+
     .pricing-note {
         font-size: 0.85rem;
     }
-
-}
-
-
 /* =========================================================
    FINAL PRICING LAYOUT OVERRIDE
 ========================================================= */
@@ -3461,13 +3460,10 @@ article {
         width: 100% !important;
         max-width: none !important;
     }
-
 }
 
 
-/* =========================================================
-   PRICING MOBILE
-========================================================= */
+/* MOBILE */
 
 @media (max-width: 700px) {
 
