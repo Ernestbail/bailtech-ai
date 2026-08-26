@@ -3076,86 +3076,230 @@ article {
 ========================================================= */
 
 .pricing-section {
-    background: #f8fafc;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(37, 99, 235, 0.08),
+            transparent 35%
+        ),
+        #f8fafc;
 }
 
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-top: 42px;
+    gap: 22px;
+    margin-top: 48px;
+    align-items: stretch;
 }
 
 .pricing-card {
+    position: relative;
     background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 18px;
-    padding: 30px 24px;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+
     display: flex;
     flex-direction: column;
-    height: 100%;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    min-height: 100%;
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
+
+
+/* BLUE TOP ACCENT */
+
+.pricing-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #1769e0,
+        #4f8df7
+    );
+}
+
 
 .pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
-}
-
-.pricing-label {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #1769e0;
-    margin-bottom: 14px;
-}
-
-.pricing-card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 18px;
-    color: #172033;
-}
-
-.pricing-price {
-    margin-bottom: 18px;
-}
-
-.pricing-price small {
-    display: block;
-    font-size: 0.8rem;
-    color: #6b7280;
-    margin-bottom: 4px;
-}
-
-.pricing-price strong {
-    font-size: 2rem;
-    line-height: 1;
-    color: #1769e0;
-}
-
-.pricing-card p {
-    color: #5f6b7a;
-    margin-bottom: 24px;
-}
-
-.pricing-card .btn {
-    margin-top: auto;
-    text-align: center;
-}
-
-.pricing-note {
-    max-width: 760px;
-    margin: 28px auto 0;
-    text-align: center;
-    color: #6b7280;
-    font-size: 0.92rem;
+    transform: translateY(-7px);
+    border-color: #bfdbfe;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
 }
 
 
 /* =========================================================
-   PRICING RESPONSIVE
+   PRICING LABEL
+========================================================= */
+
+.pricing-label {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+
+    padding: 6px 10px;
+    margin-bottom: 18px;
+
+    border-radius: 999px;
+
+    background: #eff6ff;
+    color: #1769e0;
+
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   PRICING TITLE
+========================================================= */
+
+.pricing-card h3 {
+    font-size: 1.3rem;
+    color: #172033;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.pricing-price {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.pricing-price small {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #64748b;
+
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+
+.pricing-price strong {
+    display: block;
+
+    color: #1769e0;
+
+    font-size: 2.35rem;
+    font-weight: 800;
+
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.pricing-card p {
+    color: #64748b;
+
+    font-size: 0.94rem;
+    line-height: 1.7;
+
+    margin-bottom: 26px;
+}
+
+
+/* =========================================================
+   PRICING BUTTON
+========================================================= */
+
+.pricing-card .btn {
+    width: 100%;
+    margin-top: auto;
+
+    text-align: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   PRICING NOTE
+========================================================= */
+
+.pricing-note {
+    max-width: 800px;
+
+    margin: 34px auto 0;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FEATURED BUSINESS WEBSITE CARD
+========================================================= */
+
+.pricing-card:first-child {
+    border: 2px solid #1769e0;
+
+    transform: translateY(-5px);
+}
+
+
+/* POPULAR RIBBON */
+
+.pricing-card:first-child::after {
+    content: "POPULAR";
+
+    position: absolute;
+
+    top: 16px;
+    right: -33px;
+
+    width: 120px;
+
+    padding: 6px 0;
+
+    text-align: center;
+
+    background: #1769e0;
+    color: #ffffff;
+
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+
+    transform: rotate(45deg);
+}
+
+
+.pricing-card:first-child:hover {
+    transform: translateY(-9px);
+}
+
+
+/* =========================================================
+   TABLET
 ========================================================= */
 
 @media (max-width: 1100px) {
@@ -3163,19 +3307,39 @@ article {
     .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
 
     .pricing-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+
 
     .pricing-card {
-        padding: 26px 20px;
+        padding: 28px 22px;
     }
 
-    .pricing-price strong {
-        font-size: 1.8rem;
+
+    .pricing-card:first-child {
+        transform: none;
     }
+
+
+    .pricing-card:first-child:hover {
+        transform: translateY(-5px);
+    }
+
+
+    .pricing-price strong {
+        font-size: 2rem;
+    }
+
 }
