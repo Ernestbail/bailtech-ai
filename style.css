@@ -3344,3 +3344,49 @@ nav a:hover {
     }
 
 }
+/* =========================================================
+   FINAL PRICING NOTE STYLE
+========================================================= */
+
+.pricing-section .pricing-note {
+    max-width: 850px !important;
+
+    margin: 55px auto 0 !important;
+
+    padding: 16px 22px !important;
+
+    background: #f2f7ff !important;
+
+    border: 1px solid #bfdbfe !important;
+    border-radius: 10px !important;
+
+    color: #64748b !important;
+
+    text-align: center !important;
+
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+}
+
+
+.pricing-section .pricing-note strong {
+    color: #1769e0 !important;
+    font-weight: 700 !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .pricing-section .pricing-note {
+        margin-top: 32px !important;
+
+        padding: 15px 18px !important;
+
+        font-size: 0.82rem !important;
+
+        border-radius: 9px !important;
+    }
+
+}
