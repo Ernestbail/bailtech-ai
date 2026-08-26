@@ -3085,25 +3085,45 @@ article {
         #f8fafc;
 }
 
+
+/* =========================================================
+   PRICING GRID
+========================================================= */
+
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
     margin-top: 48px;
     align-items: stretch;
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+
+/* =========================================================
+   PRICING CARD
+========================================================= */
 
 .pricing-card {
     position: relative;
+
     background: #ffffff;
+
     border: 1px solid #e2e8f0;
     border-radius: 20px;
-    padding: 32px 24px 28px;
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+
+    padding: 34px 28px 30px;
+
+    box-shadow:
+        0 12px 35px rgba(15, 23, 42, 0.07);
 
     display: flex;
     flex-direction: column;
+
     min-height: 100%;
+
     overflow: hidden;
 
     transition:
@@ -3113,11 +3133,15 @@ article {
 }
 
 
-/* BLUE TOP ACCENT */
+/* =========================================================
+   BLUE TOP ACCENT
+========================================================= */
 
 .pricing-card::before {
     content: "";
+
     position: absolute;
+
     top: 0;
     left: 0;
 
@@ -3132,10 +3156,17 @@ article {
 }
 
 
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
 .pricing-card:hover {
     transform: translateY(-7px);
+
     border-color: #bfdbfe;
-    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.12);
 }
 
 
@@ -3146,18 +3177,22 @@ article {
 .pricing-label {
     display: inline-flex;
     align-items: center;
+
     width: fit-content;
 
-    padding: 6px 10px;
+    padding: 6px 11px;
+
     margin-bottom: 18px;
 
     border-radius: 999px;
 
     background: #eff6ff;
+
     color: #1769e0;
 
     font-size: 0.67rem;
     font-weight: 800;
+
     letter-spacing: 0.1em;
 }
 
@@ -3167,8 +3202,10 @@ article {
 ========================================================= */
 
 .pricing-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.45rem;
+
     color: #172033;
+
     margin-bottom: 20px;
 }
 
@@ -3178,8 +3215,9 @@ article {
 ========================================================= */
 
 .pricing-price {
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    padding-bottom: 22px;
+
+    margin-bottom: 22px;
 
     border-bottom: 1px solid #e5e7eb;
 }
@@ -3192,7 +3230,8 @@ article {
 
     color: #64748b;
 
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+
     font-weight: 500;
 }
 
@@ -3202,10 +3241,12 @@ article {
 
     color: #1769e0;
 
-    font-size: 2.35rem;
+    font-size: 2.65rem;
+
     font-weight: 800;
 
     line-height: 1;
+
     letter-spacing: -0.04em;
 }
 
@@ -3217,10 +3258,11 @@ article {
 .pricing-card p {
     color: #64748b;
 
-    font-size: 0.94rem;
-    line-height: 1.7;
+    font-size: 0.96rem;
 
-    margin-bottom: 26px;
+    line-height: 1.75;
+
+    margin-bottom: 28px;
 }
 
 
@@ -3230,9 +3272,11 @@ article {
 
 .pricing-card .btn {
     width: 100%;
+
     margin-top: auto;
 
     text-align: center;
+
     justify-content: center;
 }
 
@@ -3244,13 +3288,14 @@ article {
 .pricing-note {
     max-width: 800px;
 
-    margin: 34px auto 0;
+    margin: 36px auto 0;
 
     text-align: center;
 
     color: #64748b;
 
     font-size: 0.9rem;
+
     line-height: 1.7;
 }
 
@@ -3263,30 +3308,38 @@ article {
     border: 2px solid #1769e0;
 
     transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(23, 105, 224, 0.12);
 }
 
 
-/* POPULAR RIBBON */
+/* =========================================================
+   POPULAR RIBBON
+========================================================= */
 
 .pricing-card:first-child::after {
     content: "POPULAR";
 
     position: absolute;
 
-    top: 16px;
-    right: -33px;
+    top: 17px;
+    right: -34px;
 
-    width: 120px;
+    width: 125px;
 
     padding: 6px 0;
 
     text-align: center;
 
     background: #1769e0;
+
     color: #ffffff;
 
     font-size: 0.62rem;
+
     font-weight: 800;
+
     letter-spacing: 0.08em;
 
     transform: rotate(45deg);
@@ -3302,10 +3355,22 @@ article {
    TABLET
 ========================================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
 
     .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
+
+        gap: 22px;
+    }
+
+
+    .pricing-card {
+        padding: 30px 24px 28px;
+    }
+
+
+    .pricing-price strong {
+        font-size: 2.3rem;
     }
 
 }
@@ -3319,7 +3384,10 @@ article {
 
     .pricing-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+
+        gap: 22px;
+
+        margin-top: 36px;
     }
 
 
@@ -3340,6 +3408,39 @@ article {
 
     .pricing-price strong {
         font-size: 2rem;
+    }
+
+
+    .pricing-card h3 {
+        font-size: 1.3rem;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .pricing-card {
+        padding: 25px 18px;
+    }
+
+
+    .pricing-label {
+        font-size: 0.62rem;
+    }
+
+
+    .pricing-price strong {
+        font-size: 1.85rem;
+    }
+
+
+    .pricing-note {
+        font-size: 0.85rem;
     }
 
 }
