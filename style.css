@@ -3050,33 +3050,51 @@ nav a:hover {
 }
 
 /* =========================================================
-   MOBILE PRICING
-   KEEP PREMIUM DESIGN
+   MOBILE PRICING — PREMIUM DESIGN
 ========================================================= */
 
 @media (max-width: 700px) {
 
+    /* ONE CARD PER ROW */
+
     .pricing-section .pricing-grid {
         display: grid !important;
-
         grid-template-columns: 1fr !important;
 
         gap: 22px !important;
+
+        width: 100% !important;
 
         margin-top: 36px !important;
     }
 
 
+    /* PREMIUM BLUE BORDER ON EVERY CARD */
+
     .pricing-section .pricing-card {
+        position: relative;
+
         width: 100% !important;
+        min-width: 0 !important;
 
         padding: 28px 22px !important;
 
-        border-radius: 20px;
+        background: #ffffff;
+
+        border: 2px solid #1769e0 !important;
+
+        border-radius: 20px !important;
+
+        box-shadow:
+            0 14px 32px rgba(23, 105, 224, 0.10);
+
+        overflow: hidden;
+
+        transform: none;
     }
 
 
-    /* KEEP PREMIUM BLUE TOP LINE */
+    /* PREMIUM BLUE LINE ACROSS TOP */
 
     .pricing-section .pricing-card::before {
         content: "";
@@ -3098,19 +3116,66 @@ nav a:hover {
     }
 
 
-    /* KEEP BUSINESS WEBSITE FEATURED */
+    /* SMALL CATEGORY LABEL */
 
-    .pricing-section .pricing-card:first-child {
-        border: 2px solid #1769e0;
+    .pricing-section .pricing-label {
+        color: #1769e0 !important;
 
-        transform: none;
+        background: #eff6ff;
 
-        box-shadow:
-            0 18px 40px rgba(23, 105, 224, 0.12);
+        font-weight: 800;
     }
 
 
-    /* KEEP POPULAR RIBBON */
+    /* PACKAGE TITLE BLUE */
+
+    .pricing-section .pricing-card h3 {
+        color: #1769e0 !important;
+
+        font-size: 1.3rem;
+
+        font-weight: 700;
+    }
+
+
+    /* STARTING AT */
+
+    .pricing-section .pricing-price small {
+        color: #64748b !important;
+    }
+
+
+    /* PRICE BLUE */
+
+    .pricing-section .pricing-price strong {
+        color: #1769e0 !important;
+
+        font-size: 2rem;
+
+        font-weight: 800;
+    }
+
+
+    /* DESCRIPTION */
+
+    .pricing-section .pricing-card p {
+        color: #64748b !important;
+    }
+
+
+    /* FEATURED FIRST CARD */
+
+    .pricing-section .pricing-card:first-child {
+        border: 2px solid #1769e0 !important;
+
+        box-shadow:
+            0 18px 40px rgba(23, 105, 224, 0.16);
+
+        transform: none;
+    }
+
+
+    /* POPULAR RIBBON */
 
     .pricing-section .pricing-card:first-child::after {
         content: "POPULAR";
@@ -3139,13 +3204,49 @@ nav a:hover {
     }
 
 
-    .pricing-section .pricing-price strong {
-        font-size: 2rem;
+    /* BUTTON */
+
+    .pricing-section .pricing-card .btn {
+        width: 100%;
+
+        margin-top: auto;
+
+        text-align: center;
+
+        justify-content: center;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .pricing-section .pricing-card {
+        padding: 25px 18px !important;
+    }
+
+
+    .pricing-section .pricing-label {
+        font-size: 0.62rem;
     }
 
 
     .pricing-section .pricing-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.22rem;
+    }
+
+
+    .pricing-section .pricing-price strong {
+        font-size: 1.85rem;
+    }
+
+
+    .pricing-section .pricing-note {
+        font-size: 0.85rem;
     }
 
 }
