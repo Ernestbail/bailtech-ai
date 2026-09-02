@@ -394,6 +394,31 @@ a.btn.btn-primary.hero-consultation-btn:hover {
     box-shadow:
         0 16px 34px rgba(23, 105, 224, 0.38) !important;
 }
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.btn-secondary {
+    background: #ffffff;
+    color: #1769e0;
+
+    border: 2px solid #1769e0;
+
+    box-shadow:
+        0 8px 20px rgba(23, 105, 224, 0.10);
+}
+
+.btn-secondary:hover {
+    background: #1769e0;
+    color: #ffffff;
+
+    border-color: #1769e0;
+
+    box-shadow:
+        0 12px 26px rgba(23, 105, 224, 0.20);
+}
+
 /* =========================================================
    HERO CARD
 ========================================================= */
