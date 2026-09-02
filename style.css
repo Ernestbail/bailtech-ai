@@ -505,15 +505,31 @@ nav a:hover {
 }
 
 .preview-grid div {
-    padding: 18px;
+    padding: 20px;
 
-    background: white;
+    background: rgba(255, 255, 255, 0.92);
 
-    border: 1px solid #e0e7f0;
+    border: 1px solid rgba(23, 105, 224, 0.14);
 
-    border-radius: 8px;
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 20px rgba(23, 105, 224, 0.07);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
+.preview-grid div:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(23, 105, 224, 0.30);
+
+    box-shadow:
+        0 12px 28px rgba(23, 105, 224, 0.12);
+}
 .preview-grid strong,
 .preview-grid small {
     display: block;
