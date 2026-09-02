@@ -425,7 +425,281 @@ nav a:hover {
         0 32px 70px rgba(23, 105, 224, 0.18),
         0 12px 30px rgba(15, 23, 42, 0.10);
 }
+/* =========================================================
+   HERO — WEBSITE + AI CLOUD PREVIEW
+========================================================= */
 
+.hero-browser {
+    transform: rotate(1deg);
+}
+
+.hero-browser:hover {
+    transform: rotate(0deg) translateY(-6px);
+}
+
+
+/* BROWSER ADDRESS */
+
+.browser-address {
+    margin-left: auto;
+    margin-right: 18px;
+
+    padding: 7px 16px;
+
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+
+    color: #64748b;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+
+/* MAIN PREVIEW */
+
+.cloud-preview {
+    min-height: 370px;
+
+    padding: 28px 30px 32px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(23, 105, 224, 0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f8fbff 55%,
+            #edf5ff 100%
+        );
+}
+
+
+/* MINI NAV */
+
+.preview-mini-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid rgba(23, 105, 224, 0.10);
+}
+
+.preview-mini-nav strong {
+    color: #0f172a;
+    font-size: 0.95rem;
+}
+
+.preview-mini-nav strong span {
+    color: #1769e0;
+}
+
+.preview-mini-nav small {
+    color: #64748b;
+    font-size: 0.68rem;
+}
+
+
+/* PREVIEW CONTENT */
+
+.cloud-preview-content {
+    padding-top: 24px;
+}
+
+.cloud-kicker {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #1769e0;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.cloud-preview-content h3 {
+    margin: 0 0 24px;
+
+    color: #0f172a;
+
+    font-size: 1.6rem;
+    line-height: 1.15;
+}
+
+.cloud-preview-content h3 span {
+    display: block;
+    color: #1769e0;
+}
+
+
+/* CLOUD SYSTEM */
+
+.cloud-system {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* MAIN CLOUD */
+
+.cloud-main {
+    position: relative;
+
+    width: 190px;
+
+    padding: 18px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1769e0,
+            #2563eb
+        );
+
+    border-radius: 24px;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 16px 35px rgba(23, 105, 224, 0.25);
+}
+
+.cloud-icon {
+    margin-bottom: 4px;
+
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.cloud-main strong {
+    font-size: 0.95rem;
+}
+
+.cloud-main small {
+    margin-top: 3px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 0.65rem;
+}
+
+
+/* CONNECTION LINE */
+
+.cloud-main::after {
+    content: "";
+
+    position: absolute;
+
+    width: 2px;
+    height: 28px;
+
+    left: 50%;
+    bottom: -28px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(23, 105, 224, 0.55),
+            rgba(23, 105, 224, 0.12)
+        );
+}
+
+
+/* CLOUD NODES */
+
+.cloud-connectors {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 38px;
+}
+
+.cloud-node {
+    padding: 14px 9px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(23, 105, 224, 0.13);
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 22px rgba(23, 105, 224, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.cloud-node:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(23, 105, 224, 0.30);
+
+    box-shadow:
+        0 12px 28px rgba(23, 105, 224, 0.14);
+}
+
+.cloud-node-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 8px;
+
+    background: #eaf3ff;
+
+    border-radius: 10px;
+
+    color: #1769e0;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.cloud-node strong {
+    color: #0f172a;
+
+    font-size: 0.78rem;
+}
+
+.cloud-node small {
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 0.61rem;
+    line-height: 1.35;
+}
 .window-top {
     height: 44px;
 
