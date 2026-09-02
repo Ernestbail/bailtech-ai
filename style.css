@@ -368,60 +368,32 @@ nav a:hover {
 }
 /* HERO FREE CONSULTATION BUTTON */
 
-.hero-consultation-btn {
+a.btn.btn-primary.hero-consultation-btn {
     background: linear-gradient(
         135deg,
         #1769e0,
         #0b3d91
-    );
+    ) !important;
 
-    color: #ffffff;
-
-    border: 1px solid #1769e0;
+    color: #ffffff !important;
+    border: 1px solid #1769e0 !important;
 
     box-shadow:
-        0 12px 28px rgba(23, 105, 224, 0.30);
+        0 12px 28px rgba(23, 105, 224, 0.30) !important;
 }
 
-.hero-consultation-btn:hover {
+a.btn.btn-primary.hero-consultation-btn:hover {
     background: linear-gradient(
         135deg,
         #0b3d91,
         #1769e0
-    );
+    ) !important;
 
-    color: #ffffff;
-
-    box-shadow:
-        0 16px 34px rgba(23, 105, 224, 0.38);
-}
-.btn-secondary {
-    background: white;
-
-    color: var(--dark);
-
-    border: 1px solid var(--border);
-}
-
-.btn-secondary:hover {
-    border-color: #b8c7da;
-}
-
-.btn-white {
-    background: #ffffff;
-    color: var(--blue);
-
-    border: 1px solid rgba(255, 255, 255, 0.65);
+    color: #ffffff !important;
 
     box-shadow:
-        0 12px 28px rgba(0, 0, 0, 0.16);
+        0 16px 34px rgba(23, 105, 224, 0.38) !important;
 }
-
-.btn-white:hover {
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
 /* =========================================================
    HERO CARD
 ========================================================= */
