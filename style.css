@@ -366,7 +366,35 @@ nav a:hover {
 .btn-primary:hover {
     background: var(--blue-dark);
 }
+/* HERO FREE CONSULTATION BUTTON */
 
+.hero-consultation-btn {
+    background: linear-gradient(
+        135deg,
+        #1769e0,
+        #0b3d91
+    );
+
+    color: #ffffff;
+
+    border: 1px solid #1769e0;
+
+    box-shadow:
+        0 12px 28px rgba(23, 105, 224, 0.30);
+}
+
+.hero-consultation-btn:hover {
+    background: linear-gradient(
+        135deg,
+        #0b3d91,
+        #1769e0
+    );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 16px 34px rgba(23, 105, 224, 0.38);
+}
 .btn-secondary {
     background: white;
 
