@@ -4310,3 +4310,34 @@ gap: 12px;
     }
 
 }
+/* =========================================================
+   PRICING BUTTON — ALL SCREENS
+========================================================= */
+
+.pricing-section .pricing-card .btn-secondary {
+    background: #ffffff !important;
+    color: #1769e0 !important;
+
+    border: 2px solid #1769e0 !important;
+    border-radius: 8px;
+
+    width: 100%;
+
+    padding: 14px 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 20px rgba(23, 105, 224, 0.10);
+}
+
+.pricing-section .pricing-card .btn-secondary:hover {
+    background: #1769e0 !important;
+    color: #ffffff !important;
+
+    border-color: #1769e0 !important;
+}
