@@ -3144,15 +3144,14 @@ nav a:hover {
 
         flex-direction: column;
 
-        gap: 12px;
-    }
+   
+gap: 12px;
+}
 
-    .hero-buttons .btn {
-        width: 100%;
-    }
+.hero-buttons .btn {
+    width: 100%;
+}
 
-    .hero-card {
-        width: 100%;
 /* 24-HOUR MESSAGE — MOBILE */
 
 .hero-fast-launch {
