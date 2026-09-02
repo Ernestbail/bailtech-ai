@@ -291,6 +291,31 @@ nav a:hover {
 }
 
 /* =========================================================
+   24-HOUR WEBSITE MESSAGE
+========================================================= */
+
+.hero-fast-launch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin: 20px 0 24px;
+    padding: 10px 16px;
+
+    background: #eff6ff;
+    border: 1px solid rgba(23, 105, 224, 0.18);
+    border-radius: 10px;
+
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.hero-fast-launch strong {
+    color: #1769e0;
+    font-weight: 700;
+}
+/* =========================================================
    BUTTONS
 ========================================================= */
 
@@ -2380,7 +2405,17 @@ nav a:hover {
 
     .hero-card {
         width: 100%;
+/* 24-HOUR MESSAGE — MOBILE */
 
+.hero-fast-launch {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    margin: 18px 0 22px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    text-align: center;
+}
         max-width: 100%;
 
         margin: 0;
