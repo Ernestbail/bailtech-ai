@@ -3755,7 +3755,7 @@ gap: 12px;
    FINAL PRICING LAYOUT — LAPTOP / DESKTOP
 ========================================================= */
 
-@media (min-width: 701px) {
+@media screen and (min-width: 701px) {
 
   /* 4-CARD PRICING LAYOUT */
 
