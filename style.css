@@ -1691,7 +1691,18 @@ nav a:hover {
 ========================================================= */
 
 .reviews {
-    background: var(--gray-light);
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(23, 105, 224, 0.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #f5f7fa 50%,
+            #eef5ff 100%
+        );
 }
 
 .reviews-heading {
