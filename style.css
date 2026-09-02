@@ -220,11 +220,21 @@ nav a:hover {
 
     background:
         radial-gradient(
-            circle at 80% 20%,
-            #e7f1ff 0%,
+            circle at 85% 15%,
+            rgba(23, 105, 224, 0.18) 0%,
             transparent 32%
         ),
-        #ffffff;
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(96, 165, 250, 0.12) 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fbff 50%,
+            #eef5ff 100%
+        );
 
     padding: 105px 0 110px;
 }
