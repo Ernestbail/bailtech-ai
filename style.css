@@ -446,15 +446,23 @@ nav a:hover {
 }
 
 .dashboard-preview {
+    position: relative;
+
     min-height: 370px;
 
     padding: 50px 45px;
 
     background:
+        radial-gradient(
+            circle at top right,
+            rgba(23, 105, 224, 0.14),
+            transparent 34%
+        ),
         linear-gradient(
             135deg,
-            #f8fbff,
-            #edf4fc
+            #ffffff 0%,
+            #f4f8ff 55%,
+            #eaf3ff 100%
         );
 }
 
