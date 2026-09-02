@@ -884,12 +884,13 @@ nav a:hover {
 }
 
 .portfolio-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-7px);
+
+    border-color: rgba(23, 105, 224, 0.30);
 
     box-shadow:
-        0 15px 40px rgba(22, 47, 84, 0.09);
+        0 22px 50px rgba(23, 105, 224, 0.13);
 }
-
 .featured-project {
     grid-column: span 2;
 }
