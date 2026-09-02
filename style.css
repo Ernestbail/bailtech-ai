@@ -799,7 +799,13 @@ nav a:hover {
 ========================================================= */
 
 .process-section {
-    background: var(--gray-light);
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbff 0%,
+            #f5f7fa 50%,
+            #eef5ff 100%
+        );
 }
 
 .process-grid {
