@@ -3757,24 +3757,23 @@ gap: 12px;
 
 @media (min-width: 701px) {
 
-    /* 2 x 2 PRICING LAYOUT */
+  /* 4-CARD PRICING LAYOUT */
 
-    .pricing-section .pricing-grid {
-        display: grid !important;
+.pricing-section .pricing-grid {
+    display: grid !important;
 
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr)) !important;
 
-        gap: 28px !important;
+    gap: 22px !important;
 
-        width: 100% !important;
-        max-width: 1050px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
 
-        margin: 48px auto 0 !important;
+    margin: 48px auto 0 !important;
 
-        align-items: stretch !important;
-    }
-
+    align-items: stretch !important;
+}
 
     /* PREMIUM CARD DESIGN */
 
