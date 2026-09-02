@@ -3545,6 +3545,20 @@ nav a:hover {
     align-items: flex-start;
     gap: 10px;
 }
+   /* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-browser,
+    .hero-ai-badge,
+    .hero-cloud-badge {
+        animation: none;
+        transform: none;
+    }
+
+}    
 /* =========================================================
    SMALL PHONES
 ========================================================= */
