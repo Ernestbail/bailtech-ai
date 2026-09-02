@@ -713,24 +713,43 @@ nav a:hover {
 }
 
 .service-icon {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     margin-bottom: 25px;
 
-    background: var(--blue-light);
+    background:
+        linear-gradient(
+            135deg,
+            #eaf3ff,
+            #dbeafe
+        );
 
     color: var(--blue);
 
-    border-radius: 10px;
+    border: 1px solid rgba(23, 105, 224, 0.14);
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 20px rgba(23, 105, 224, 0.10);
 
     font-size: 1.4rem;
     font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.08) rotate(-3deg);
+
+    box-shadow:
+        0 12px 25px rgba(23, 105, 224, 0.16);
 }
 
 .service-card h3 {
