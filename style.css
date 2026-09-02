@@ -1790,12 +1790,12 @@ nav a:hover {
 }
 
 .review-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-7px);
 
-    border-color: #c8d9ef;
+    border-color: rgba(23, 105, 224, 0.30);
 
     box-shadow:
-        0 15px 40px rgba(22, 47, 84, 0.09);
+        0 22px 48px rgba(23, 105, 224, 0.13);
 }
 
 /* =========================================================
