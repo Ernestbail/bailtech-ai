@@ -692,11 +692,12 @@ nav a:hover {
 }
 
 .service-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
 
-    border-color: #c8d9ef;
+    border-color: rgba(23, 105, 224, 0.35);
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        0 20px 45px rgba(23, 105, 224, 0.13);
 }
 
 .service-number {
