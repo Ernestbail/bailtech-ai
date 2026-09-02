@@ -858,9 +858,14 @@ nav a:hover {
 ========================================================= */
 
 .portfolio {
-    background: white;
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f8fbff 50%,
+            #ffffff 100%
+        );
 }
-
 .portfolio-grid {
     display: grid;
 
