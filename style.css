@@ -3179,7 +3179,23 @@ nav a:hover {
         color: #64748b !important;
     }
 
+/* PRICING FEATURES */
 
+.pricing-section .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.pricing-section .pricing-features li {
+    color: #475569;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    text-align: left;
+}
     /* PRICE BLUE */
 
     .pricing-section .pricing-price strong {
