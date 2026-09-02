@@ -2962,6 +2962,25 @@ nav a:hover {
             border-color 0.25s ease;
     }
 
+   /* =========================================================
+   PRICING FEATURES
+========================================================= */
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 22px 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pricing-features li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #475569;
+    text-align: left;
+}
 
     /* BLUE PREMIUM LINE ACROSS TOP */
 
